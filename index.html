@@ -106,11 +106,12 @@
         if(intersects.length>0){
           // intersects[0].object.material.color.set(0xff0000);
           intersects[0].object.scale.set(1.5,1.5,1.5);
-
+					// camera.set(1.5,1.5,1.5);
         }else{
 					//this wont work with multiple objects!
           cube.material.color.set(0x808080);
           cube.scale.set(1,1,1)
+
         }
         // cube.scale.set(1,1,1);
 
@@ -127,6 +128,15 @@
 
       window.requestAnimationFrame(animate);
 
+			window.addEventListener( 'resize', onWindowResize, false );
+
+			function onWindowResize() {
+
+			   camera.aspect = window.innerWidth / window.innerHeight;
+			   camera.updateProjectionMatrix();
+			   renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
 			// animate();
 		</script>
 	</body>
