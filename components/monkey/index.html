@@ -1,0 +1,131 @@
+<html>
+	<head>
+		<title></title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+    <script src="../../js/three.min.js"></script>
+    <script src="../../js/OrbitControls.js"></script>
+    <script src="../../js/three.interaction.js"></script>
+		<script src="../../js/animations.js"></script>
+    <script src="../../js/Tween.js"></script>
+		<script src="../../js/GLTFLoader.js"></script>
+		<script src="../../js/OBJLoader.js"></script>
+		<script>
+			//create scene
+			var scene = new THREE.Scene();
+      scene.background = new THREE.Color( 0x7EC0EE);
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+			var renderer = new THREE.WebGLRenderer();
+      const interaction = new THREE.Interaction(renderer, scene, camera);
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+      //Orbit Controls
+      var controls = new THREE.OrbitControls( camera );
+      camera.position.set( 0, 0, 5);
+      controls.update();
+
+      //Lighting
+      var light = new THREE.DirectionalLight( 0x404040 ); // soft white light
+      light.intensity = 4.5;
+      light.position.set(-20,30,10)
+      scene.add( light );
+
+      var light2 = new THREE.SpotLight( 0x404040 ); // soft white light
+      light2.intensity = 3;
+      light2.position.set(-3,-30,-10)
+      scene.add( light2 );
+
+      var light3 = new THREE.AmbientLight( 0x404040 ); // soft white light
+      light3.intensity = 1;
+      scene.add( light3 );
+
+			//create 2 cubes
+			// var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+			// var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+			// var cube = new THREE.Mesh( geometry, material );
+			// scene.add( cube );
+
+      //plane
+      var geometry = new THREE.PlaneGeometry( 5, 5, 32 );
+      var material = new THREE.MeshBasicMaterial( {color: 0xffffff, side: THREE.DoubleSide} );
+      var plane = new THREE.Mesh( geometry, material );
+      plane.rotation.set(1.5708,0,0);
+      plane.name = "plane";
+      scene.add( plane );
+
+			//monkey_test
+			// var loader = new THREE.OBJLoader();
+			// loader.load(
+			// 	// resource URL
+			// 	'../../assets/monkey/AlanMonkey_v1obj.obj',
+			// 	// called when the resource is loaded
+			// 	function ( object ) {
+      //
+			// 		// gltf.scene.scale.set(0.3,0.3,0.3);
+			// 		// gltf.scene.position.set(0,-2,0);
+			// 		// gltf.scene.name = "island";
+      //     var monkey = object;
+      //     monkey.name = "monkey";
+			// 		scene.add( monkey );
+			// 	},
+      //
+			// );
+
+      var loader = new THREE.GLTFLoader();
+      loader.load(
+        // resource URL
+        '../../assets/monkey/AlanMonkey_v1.gltf',
+        // called when the resource is loaded
+        function ( gltf ) {
+
+          // gltf.scene.scale.set(0.3,0.3,0.3);
+          // gltf.scene.position.set(0,-2,0);
+          gltf.scene.name = "monkey";
+          scene.add( gltf.scene );
+        }
+      );
+
+
+
+      function bounce(object){
+        object.on('mouseover', function(ev) {
+          new TWEEN.Tween( object.scale ).to( {
+            x: 1.5,
+            y: 1.5,
+            z: 1.5}, 200)
+          .easing( TWEEN.Easing.Cubic.Out).start();
+          object.scale.set(1.5,1.5,1.5);
+          new TWEEN.Tween( object.scale ).to( {
+            x: 1,
+            y: 1,
+            z: 1}, 1000 ).delay(200)
+          .easing( TWEEN.Easing.Elastic.Out).start();
+        });
+      }
+
+
+			var animate = function () {
+        scene.traverse( function( node ) {
+          if(node.name == "monkey"){
+            bounce(node);
+          }
+
+        });
+				requestAnimationFrame( animate );
+				render();
+			};
+
+      function render(){
+        TWEEN.update();
+        renderer.render( scene, camera );
+      }
+
+			animate();
+		</script>
+	</body>
+</html>

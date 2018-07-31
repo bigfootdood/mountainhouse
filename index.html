@@ -1,8 +1,5 @@
 <html>
 	<head>
-		<meta
-		 name='viewport'
-		 content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
 		<title></title>
 		<style>
 			body { margin: 0; }
@@ -10,137 +7,163 @@
 		</style>
 	</head>
 	<body>
-		<script src="js/three.min.js"></script>
-    <script src="js/GLTFLoader.js"></script>
-    <script src="js/OBJLoader.js"></script>
+    <script src="js/three.min.js"></script>
     <script src="js/OrbitControls.js"></script>
+		<script src="js/GLTFLoader.js"></script>
+    <script src="js/three.interaction.js"></script>
+		<script src="js/animations.js"></script>
+		<script src="js/Tween.js"></script>
 		<script>
-
-      //Setup Scene
+			//create scene
 			var scene = new THREE.Scene();
       scene.background = new THREE.Color( 0x7EC0EE);
-
-      //Starter Camera
-      var camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
-
-      //Orbit Controls
-      var controls = new THREE.OrbitControls( camera );
-
-      //controls.update() must be called after any manual changes to the camera's transform
-      camera.position.set( 0, 0, 5);
-      controls.update();
-
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
 			var renderer = new THREE.WebGLRenderer();
+      const interaction = new THREE.Interaction(renderer, scene, camera);
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			document.body.appendChild( renderer.domElement );
 
+      //Orbit Controls
+      var controls = new THREE.OrbitControls( camera );
+      camera.position.set( 0, 0, 5);
+      controls.update();
 
-
-			var geometry = new THREE.BoxGeometry( .2, .2, .2 );
-			var material = new THREE.MeshBasicMaterial( { color: 0x808080 } );
+			//create 2 cubes
+			var geometry = new THREE.BoxGeometry( 1,1,1);
+			var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+      var material2 = new THREE.MeshBasicMaterial( { color: 0xffffff } );
 			var cube = new THREE.Mesh( geometry, material );
+      var cube2 = new THREE.Mesh(geometry,material2);
 			scene.add( cube );
-      cube.position.set(0,-.5,1);
+      scene.add(cube2);
+      cube.position.set(-.7,-.6,.7);
+			cube.scale.set( .15, .15, .15 );
+      cube2.position.set(.6,-.3,1.3);
+			cube2.scale.set( .15, .15, .15 );
 
-      //Lighting
-      var light = new THREE.DirectionalLight( 0x404040 ); // soft white light
-      light.intensity = 4.5;
-      light.position.set(-20,30,10)
-      scene.add( light );
+			//Lighting
+			var light = new THREE.DirectionalLight( 0x404040 ); // soft white light
+			light.intensity = 4.5;
+			light.position.set(-20,30,10)
+			scene.add( light );
 
-      var light2 = new THREE.SpotLight( 0x404040 ); // soft white light
-      light2.intensity = 3;
-      light2.position.set(-3,-30,-10)
-      scene.add( light2 );
+			var light2 = new THREE.SpotLight( 0x404040 ); // soft white light
+			light2.intensity = 3;
+			light2.position.set(-3,-30,-10)
+			scene.add( light2 );
 
-      var light3 = new THREE.AmbientLight( 0x404040 ); // soft white light
-      light3.intensity = 1;
-      scene.add( light3 );
+			var light3 = new THREE.AmbientLight( 0x404040 ); // soft white light
+			light3.intensity = 1;
+			scene.add( light3 );
 
 
-      // Load Snow Island
-      var loader = new THREE.GLTFLoader();
-      loader.load(
-      	// resource URL
-      	'assets/island-gltf/WinterIslandv2.glb',
-      	// called when the resource is loaded
-      	function ( gltf ) {
+			// Load Snow Island
+			var loader = new THREE.GLTFLoader();
+			loader.load(
+				// resource URL
+				'assets/island-gltf/WinterIslandv2.glb',
+				// called when the resource is loaded
+				function ( gltf ) {
 
-          gltf.scene.scale.set(0.3,0.3,0.3);
-          gltf.scene.position.set(0,-2,0);
-      		scene.add( gltf.scene );
-      	},
-      	// called while loading is progressing
-      	function ( xhr ) {
+					gltf.scene.scale.set(0.3,0.3,0.3);
+					gltf.scene.position.set(0,-2,0);
+					gltf.scene.name = "island";
+					scene.add( gltf.scene );
+				},
+				// called while loading is progressing
+				function ( xhr ) {
 
-      		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+					console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
 
-      	},
-      	// called when loading has errors
-      	function ( error ) {
-      		console.log( 'An error happened' );
+				},
+				// called when loading has errors
+				function ( error ) {
+					console.log( 'An error happened' );
 
-      	}
-      );
+				}
+			);
 
-      var raycaster = new THREE.Raycaster();
-      var mouse = new THREE.Vector2();
+			// loader.load(
+			// 	// resource URL
+			// 	'assets/sled/sled.gltf',
+			// 	// called when the resource is loaded
+			// 	function ( gltf ) {
+			//
+			// 		gltf.scene.scale.set(0.005,0.005,0.005);
+			// 		gltf.scene.position.set(0,-.555,1.1);
+			// 		gltf.scene.name = "island";
+			// 		scene.add( gltf.scene );
+			// 	},
+			// 	// called while loading is progressing
+			// 	function ( xhr ) {
+			//
+			// 		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+			//
+			// 	},
+			// 	// called when loading has errors
+			// 	function ( error ) {
+			// 		console.log( 'An error happened' );
+			//
+			// 	}
+			// );
 
-      function onMouseMove( event ) {
 
-      	// calculate mouse position in normalized device coordinates
-      	// (-1 to +1) for both components
 
-      	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-      	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-
-      }
-
+			console.log(scene);
 			var animate = function () {
 				requestAnimationFrame( animate );
+				//traverse the scene to access each object
+				scene.traverse( function( node ) {
+					//if node is the island or child of the island, ignore!
 
+					if ( node instanceof THREE.Mesh && node.parent !== scene.getObjectByName("island")) {
+						node.on('mouseover', function(ev) {
+							var x = node.scale.x;
+							var y = node.scale.y;
+							var z = node.scale.z;
+							// node.scale.set(1.2,1.2,1.2);
+							new TWEEN.Tween( node.scale ).to( {
+								x: node.scale.x * 1.5,
+								y: node.scale.y * 1.5,
+								z: node.scale.z * 1.5}, 200)
+							.easing( TWEEN.Easing.Cubic.Out).start();
+							// node.scale.set(x*1.5,y*1.5,z*1.5);
+							new TWEEN.Tween( node.scale ).to( {
+								x: node.scale.x * .75,
+								y: node.scale.y * .75,
+								z: node.scale.z * .75}, 1000 ).delay(200)
+							.easing( TWEEN.Easing.Elastic.Out).start();
+						});
 
-      	// update the picking ray with the camera and mouse position
-      	raycaster.setFromCamera( mouse, camera );
+						// node.on('touchmove', function(ev) {
+						// 	node.scale(1,1,1);
+						// });
+						node.on('touchstart', function(ev) {
+							node.scale(1,1,1);
+						});
+						node.on('click', function(ev) {
+							new TWEEN.Tween( camera.position ).to( {
+								x: node.position.x + 2*node.scale.x,
+								y: node.position.y+ 2*node.scale.y,
+								z: node.position.z + 2*node.scale.z}, 3000)
+								.easing( TWEEN.Easing.Cubic.Out).start();
 
-      	// calculate objects intersecting the picking ray
-      	var intersects = raycaster.intersectObjects( scene.children );
+								new TWEEN.Tween( controls.target).to( {
+									x: node.position.x,
+									y: node.position.y,
+									z: node.position.z}, 3000)
+									.easing( TWEEN.Easing.Cubic.Out).onUpdate(function(){controls.update()}).start();
+								});
+							}
+						});
+						render();
+					};
 
-        if(intersects.length>0){
-          // intersects[0].object.material.color.set(0xff0000);
-          intersects[0].object.scale.set(1.5,1.5,1.5);
-					// camera.set(1.5,1.5,1.5);
-        }else{
-					//this wont work with multiple objects!
-          cube.material.color.set(0x808080);
-          cube.scale.set(1,1,1)
-
-        }
-        // cube.scale.set(1,1,1);
-
-
-
-
-				// cube.rotation.x += 0.01;
-				// cube.rotation.y += 0.01;
-        controls.update();
-
+			function render(){
+				TWEEN.update();
 				renderer.render( scene, camera );
-			};
-      window.addEventListener( 'mousemove', onMouseMove, false );
-
-      window.requestAnimationFrame(animate);
-
-			window.addEventListener( 'resize', onWindowResize, false );
-
-			function onWindowResize() {
-
-			   camera.aspect = window.innerWidth / window.innerHeight;
-			   camera.updateProjectionMatrix();
-			   renderer.setSize( window.innerWidth, window.innerHeight );
-
 			}
-			// animate();
+			animate();
 		</script>
 	</body>
 </html>

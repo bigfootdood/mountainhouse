@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Mohonk 360</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <!-- User Interface -->
+    <div class="container-fluid">
+      <!-- <h1 class="text-center">Test</h1> -->
+
+      <div id="topbar" class="row">
+        <!-- Back Button and Activity Selection -->
+        <div class="col" align="center">
+          <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <button type="button" onclick="resetCamera()" class="btn btn-secondary">Back</button>
+          </div>
+        </div>
+        <!-- Season Selection -->
+        <div class="col" align="center">
+          <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+              <button type="button" onclick="seasonChanger(1)" class="btn btn-secondary">Summer</button>
+              <button type="button" onclick="seasonChanger(2)" class="btn btn-secondary">Fall</button>
+              <button type="button" onclick="seasonChanger(3)" class="btn btn-secondary">Winter</button>
+              <button type="button" onclick="seasonChanger(4)"class="btn btn-secondary">Spring</button>
+            </div>
+          </div>
+        </div>
+        <!-- Animated Sun Logo -->
+        <div class="col" align="center">
+          <h1 style="color:white;">Map Tests</h1>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Libs -->
+    <script src="js/libs/three.min.js"></script>
+    <script src="js/libs/OrbitControls.js"></script>
+    <script src="js/libs/three.interaction.js"></script>
+    <script src="js/libs/Tween.js"></script>
+    <script src="js/libs/GLTFLoader.js"></script>
+
+    <!-- Subjects -->
+    <script src="js/subjects/lights.js"></script>
+    <script src="js/subjects/summer.js"></script>
+    <script src="js/subjects/winter.js"></script>
+    <script src="js/subjects/GasStation.js"></script>
+
+    <!-- Load Animations -->
+    <script src="js/animations.js"></script>
+
+    <!-- Load Scene-->
+    <script src="js/SceneManager.js"></script>
+    <!-- <script src="js/main.jss"></script> -->
+
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
