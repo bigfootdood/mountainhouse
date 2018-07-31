@@ -4,6 +4,12 @@
   position: relative;
 }
 
+#objectTitle{
+  z-index: 99;
+  position: relative;
+  color: white;
+}
+
 canvas {
   width: 100vw;
   height: 100vh;

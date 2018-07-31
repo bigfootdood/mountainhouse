@@ -39,11 +39,6 @@ function Summer() {
     'assets/models/GasStation/GasStation.gltf',
     // called when the resource is loaded
     function ( gltf ) {
-      // gltf.scene.traverse(
-      //   function(node){
-      //     console.log(node);
-      //   }
-      // )
       gltf.scene.scale.set(1,1,1);
       gltf.scene.position.set(0,-0.5,0);
       scene.add( gltf.scene );

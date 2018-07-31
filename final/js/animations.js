@@ -18,26 +18,9 @@ async function trigger_animations(scene){
           // });
           node.on('click', function(ev) {
             animating = true;
-            // console.log(count);
-            // count++;
-            // console.log("Clicking")
-            // console.log(camera.position);
-              // if (animating == false) {
               moveCamera(node);
-              // }
-              // new TWEEN.Tween( camera.position ).to( {
-              //   x: node.position.x + 2*node.scale.x,
-              //   y: node.position.y+ 2*node.scale.y,
-              //   z: node.position.z + 2*node.scale.z}, 2400)
-              //   .easing( TWEEN.Easing.Cubic.Out).start();
-              //
-              // new TWEEN.Tween( controls.target).to( {
-              //   x: node.position.x,
-              //   y: node.position.y,
-              //   z: node.position.z}, 2400)
-              //   .easing( TWEEN.Easing.Cubic.Out).onUpdate(function(){controls.update()}).start();
-            // camera.position.set(node.position.x + 2*node.scale.x,node.position.y + 2*node.scale.y,node.position.z + 2*node.scale.z)
-            // controls.target.set(node.position.x , node.position.y,node.position)
+              var title = document.getElementById("objectTitle");
+              title.innerHTML = node.name;
           });
       }
   } );
@@ -46,6 +29,7 @@ async function trigger_animations(scene){
 function bounce(object){
 
 }
+
 
 function moveCamera(object){
   // moveCamera(object);

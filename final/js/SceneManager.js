@@ -25,7 +25,7 @@ function init(){
 
   //Orbit Controls
   controls = new THREE.OrbitControls( camera );
-  camera.position.set( 0, 2, 5);
+  camera.position.set( 0, 5, 9);
   controls.update();
 
   seasonChanger(1);
@@ -46,35 +46,6 @@ function init(){
   var light3 = new THREE.AmbientLight( 0x404040 ); // soft white light
   light3.intensity = 1;
   scene.add( light3 );
-
-  // var loader = new THREE.GLTFLoader();
-  // loader.load(
-  //   // resource URL
-  //   'assets/models/GasStation/GasStation.gltf',
-  //   // called when the resource is loaded
-  //   function ( gltf ) {
-  //     gltf.scene.traverse(
-  //       function(node){
-  //         console.log(node);
-  //       }
-  //     )
-  //     gltf.scene.scale.set(1,1,1);
-  //     gltf.scene.position.set(0,-0.5,0);
-  //     scene.add( gltf.scene );
-  //   },
-  //   // called while loading is progressing
-  //   function ( xhr ) {
-  //
-  //     console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-  //
-  //   },
-  //   // called when loading has errors
-  //   function ( error ) {
-  //     console.log( 'An error happened' );
-  //
-  //   }
-  // );
-
 }
 
 // Refresh scene and switch to selected Season
@@ -111,8 +82,8 @@ function refresh(){
 function resetCamera() {
   new TWEEN.Tween( camera.position ).to( {
     x: 0,
-    y: 2,
-    z: 5}, 2400)
+    y: 5,
+    z: 9}, 2400)
     .easing( TWEEN.Easing.Cubic.Out).start();
 
   new TWEEN.Tween( controls.target).to( {
@@ -120,6 +91,8 @@ function resetCamera() {
     y: 0,
     z: 0}, 2400)
     .easing( TWEEN.Easing.Cubic.Out).onUpdate(function(){controls.update()}).start();
+    var title = document.getElementById("objectTitle");
+    title.innerHTML = "";
 }
 
 
