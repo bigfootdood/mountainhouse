@@ -1,15 +1,17 @@
 var count = 0;
-async function trigger_animations(scene){
+var animating = false;
+function trigger_animations(scene){
   scene.traverse( function( node ) {
       if ( node instanceof THREE.Mesh && node.selectable ) {
           node.on('mouseover', function(ev) {
-            node.scale.set(1.2,1.2,1.2);
+            // node.scale.set(1.2,1.2,1.2);
+            bounce(node);
             // console.log(node);
           });
-          node.on('mouseout', function(ev) {
-            node.scale.set(1,1,1);
-
-          });
+          // node.on('mouseout', function(ev) {
+          //   node.scale.set(1,1,1);
+          //
+          // });
           // node.on('touchmove', function(ev) {
           //   node.scale(1,1,1);
           // });
@@ -27,6 +29,47 @@ async function trigger_animations(scene){
 }
 
 function bounce(object){
+
+  let obj = {
+    x:object.scale.x,
+    y:object.scale.y,
+    z:object.scale.z
+  }
+
+  let cpy = JSON.parse(JSON.stringify(obj));
+
+  if (!object.animating) {
+    object.animating = true;
+    new TWEEN.Tween( object.scale).to( {
+      x: object.scale.x * 1.5,
+      y: object.scale.y * 1.5,
+      z: object.scale.z * 1.5}, 300)
+      .easing( TWEEN.Easing.Cubic.Out).start();
+
+    new TWEEN.Tween( object.position).to( {
+      x: object.position.x,
+      y: object.position.y + .25,
+      z: object.position.z}, 300)
+      .easing( TWEEN.Easing.Cubic.Out).start();
+
+    object.scale.set(object.scale.x * 1.5,object.scale.y * 1.5,object.scale.z * 1.5);
+    object.position.set(object.position.x,object.position.y +.25,object.position.z );
+
+    new TWEEN.Tween( object.position).to( {
+      x: object.position.x,
+      y: object.position.y - .25,
+      z: object.position.z}, 1500).delay(250)
+      .easing( TWEEN.Easing.Elastic.Out).start();
+    new TWEEN.Tween( object.scale).to( {
+      x: cpy.x,
+      y: cpy.y,
+      z: cpy.z}, 1500).delay(250)
+      .easing( TWEEN.Easing.Elastic.Out).
+      onComplete(function() {
+        object.animating = false
+      }).start();
+
+  }
 
 }
 

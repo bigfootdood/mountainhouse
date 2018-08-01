@@ -1,4 +1,4 @@
-function Summer() {
+async function Summer() {
   summer_objects = [];
   //create 2 cubes
   var geometry = new THREE.BoxGeometry( 1, 1, 1 );
@@ -7,6 +7,7 @@ function Summer() {
   var cube = new THREE.Mesh( geometry, material );
   cube.name = "cube1";
   cube.selectable = true;
+  cube.animating = false;
   cube.position.set(-2,0,0);
   summer_objects.push(cube);
 
@@ -14,6 +15,7 @@ function Summer() {
   cube2.position.set(2,0,0);
   cube2.name = "cube2";
   cube2.selectable = true;
+  cube2.animating = false;
   summer_objects.push(cube2);
   // scene.add( cube );
   // scene.add(cube2);
@@ -28,21 +30,36 @@ function Summer() {
   plane.position.set(0,-.5,0);
   plane.name = "plane";
   plane.selectable = false;
+  plane.animating = false;
   summer_objects.push(plane);
   // scene.add( plane );
 
 
   // Gas Station
   var loader = new THREE.GLTFLoader();
+
   loader.load(
     // resource URL
     'assets/models/GasStation/GasStation.gltf',
     // called when the resource is loaded
     function ( gltf ) {
-      gltf.scene.scale.set(1,1,1);
-      gltf.scene.position.set(0,-0.5,0);
-      scene.add( gltf.scene );
-      summer_objects.push(gltf.scene);
+      gltf.scene.traverse(function(node){
+        // console.log(node.material);
+
+        node.position.set(0,-1,0);
+        node.castShadow = true;
+        node.selectable = true;
+        // console.log(node)
+        summer_objects.push(node);
+        scene.add(node);
+
+      });
+      // console.log(summer_objects);
+      // console.log(summer_objects);
+      // gltf.scene.scale.set(1,1,1);
+
+      // scene.add( gltf.scene );
+      // summer_objects.push(gltf.scene);
     },
     // called while loading is progressing
     function ( xhr ) {
@@ -55,7 +72,10 @@ function Summer() {
       console.log( 'An error happened' );
 
     }
+
   );
+
   console.log(summer_objects);
+
   return summer_objects;
 }

@@ -1,17 +1,30 @@
-function GasStation(){
+async function GasStation(){
   var station_objects = []
-  // Load Snow Island
+
+  // Gas Station
   var loader = new THREE.GLTFLoader();
+
   loader.load(
     // resource URL
-    'assets/models/GasStation/GasStation.gltf',
+    '../../assets/models/GasStation/GasStation.gltf',
     // called when the resource is loaded
     function ( gltf ) {
+      gltf.scene.traverse(function(node){
+        console.log(node.material);
+        node.position.set(0,-0.5,0);
+        node.castShadow = true;
+        node.selectable = true;
+        // console.log(node)
+        station_objects.push(node);
+        scene.add(node);
 
-      gltf.scene.scale.set(0.1,0.1,0.1);
-      gltf.scene.position.set(0,-2,0);
-      gltf.scene.name = "island";
-      station_objects.push( gltf.scene );
+      });
+      // console.log(summer_objects);
+      // console.log(summer_objects);
+      // gltf.scene.scale.set(1,1,1);
+
+      // scene.add( gltf.scene );
+      // summer_objects.push(gltf.scene);
     },
     // called while loading is progressing
     function ( xhr ) {
@@ -24,6 +37,8 @@ function GasStation(){
       console.log( 'An error happened' );
 
     }
+
   );
+
   return station_objects;
 }

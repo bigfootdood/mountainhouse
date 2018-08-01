@@ -2103,7 +2103,7 @@ THREE.GLTFLoader = ( function () {
 			// Specification:
 			// https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#metallic-roughness-material
 
-			materialType = THREE.MeshStandardMaterial;
+			materialType = THREE.MeshLambertMaterial;
 
 			var metallicRoughness = materialDef.pbrMetallicRoughness || {};
 
@@ -2125,8 +2125,8 @@ THREE.GLTFLoader = ( function () {
 
 			}
 
-			materialParams.metalness = metallicRoughness.metallicFactor !== undefined ? metallicRoughness.metallicFactor : 1.0;
-			materialParams.roughness = metallicRoughness.roughnessFactor !== undefined ? metallicRoughness.roughnessFactor : 1.0;
+			// materialParams.metalness = metallicRoughness.metallicFactor !== undefined ? metallicRoughness.metallicFactor : 1.0;
+			// materialParams.roughness = metallicRoughness.roughnessFactor !== undefined ? metallicRoughness.roughnessFactor : 1.0;
 
 			if ( metallicRoughness.metallicRoughnessTexture !== undefined ) {
 

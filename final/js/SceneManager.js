@@ -8,6 +8,7 @@ init();
 update();
 
 function init(){
+
   //create scene
   scene = new THREE.Scene();
   scene.background = new THREE.Color( 0x7EC0EE);
@@ -22,6 +23,7 @@ function init(){
 
   // Object Interaction
   interaction = new THREE.Interaction(renderer, scene, camera);
+  interaction.on;
 
   //Orbit Controls
   controls = new THREE.OrbitControls( camera );
@@ -33,27 +35,32 @@ function init(){
   // animateCamera();
 
 
-  var light = new THREE.DirectionalLight( 0x404040 ); // soft white light
-  light.intensity = 4.5;
+  var light = new THREE.HemisphereLight( 0x404040 ); // soft white light
+  light.intensity = 3;
   light.position.set(-20,30,10)
   scene.add( light );
 
-  var light2 = new THREE.SpotLight( 0x404040 ); // soft white light
-  light2.intensity = 3;
-  light2.position.set(-3,-30,-10)
-  scene.add( light2 );
+  // var light = new THREE.DirectionalLight( 0x404040 ); // soft white light
+  // light.intensity = 10;
+  // light.position.set(-20,30,10)
+  // scene.add( light );
+  // var light2 = new THREE.SpotLight( 0x404040 ); // soft white light
+  // light2.intensity = 3;
+  // light2.position.set(-3,-30,-10)
+  // scene.add( light2 );
 
-  var light3 = new THREE.AmbientLight( 0x404040 ); // soft white light
-  light3.intensity = 1;
-  scene.add( light3 );
+  // var light3 = new THREE.AmbientLight( 0x404040 ); // soft white light
+  // light3.intensity = 2;
+  // scene.add( light3 );
 }
 
 // Refresh scene and switch to selected Season
-function seasonChanger(season){
+async function seasonChanger(season){
     if (season == 1) {
       current_season = 1;
       refresh();
-      objects = Summer();
+      objects = await Summer();
+      console.log(objects);
     }else if(season ==2) {
       current_season = 2;
       refresh()
@@ -66,7 +73,9 @@ function seasonChanger(season){
       refresh();
     }
     for (var i = 0; i < objects.length; i++) {
-      scene.add(objects[i]);
+      object = objects[i];
+      // console.log(object);
+      scene.add(object);
     }
     trigger_animations(scene);
 }
