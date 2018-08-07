@@ -93,9 +93,9 @@ function moveCamera(object){
   console.log("ANIMATING");
 
   new TWEEN.Tween( camera.position ).to( {
-    x: object.position.x + 2*object.scale.x,
-    y: object.position.y+ 2*object.scale.y,
-    z: object.position.z + 2*object.scale.z}, 2400)
+    x: attractions[object.index].cameraPosition.x,
+    y: attractions[object.index].cameraPosition.y,
+    z: attractions[object.index].cameraPosition.z}, 2400)
     .easing( TWEEN.Easing.Cubic.Out).start();
 
   new TWEEN.Tween( controls.target).to( {

@@ -1,6 +1,11 @@
 [
   {
-    "name":"cube1",
-    "description":"I am but a lonely cube"
+    "name":"purple_boy",
+    "description":"I am but a lonely purple lad",
+    "cameraPosition":{
+      "x":3,
+      "y":2,
+      "z":4
+    }
   }
 ]

@@ -28,17 +28,18 @@ function init(){
   document.body.appendChild( renderer.domElement );
 
   // Postprocessing composer
-  //
   // var renderPass = new THREE.RenderPass( scene, camera );
   //
   // var copyPass = new THREE.ShaderPass( THREE.CopyShader );
   // copyPass.renderToScreen = true;
   //
-  // var bokehPass = new Three.ShaderPass(THREE.BokehShader);
+  // var bokehPass = new THREE.ShaderPass(THREE.BokehShader);
   //
-  // var composer = new THREE.EffectComposer( renderer );
+  // composer = new THREE.EffectComposer( renderer );
   // composer.addPass( renderPass );
+  // composer.addPass(bokehPass);
   // composer.addPass( copyPass );
+  //
   //
   // composer.render( 0.05 );
 
@@ -233,6 +234,8 @@ function update() {
   requestAnimationFrame( update );
   TWEEN.update();
   controls.update();
+  // var title = document.getElementById("sunTitle");
+  // title.innerHTML = (" "+camera.position.x+" "+camera.position.y+ " "+ camera.position.z);
   // composer.render();
   render();
 
