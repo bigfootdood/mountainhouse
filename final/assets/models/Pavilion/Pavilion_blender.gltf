@@ -1,0 +1,366 @@
+{
+    "accessors": [
+        {
+            "bufferView": 1,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 7983,
+            "max": [
+                1.0,
+                1.0000001192092896,
+                1.0000001192092896
+            ],
+            "min": [
+                -1.0,
+                -1.0000001192092896,
+                -1.0000001192092896
+            ],
+            "name": "accessor_buffer_Mesh9 Model_NORMAL_0",
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 3,
+            "byteOffset": 0,
+            "componentType": 5123,
+            "count": 6525,
+            "max": [
+                7982
+            ],
+            "min": [
+                1
+            ],
+            "name": "accessor_buffer_Mesh9 Model_0",
+            "type": "SCALAR"
+        },
+        {
+            "bufferView": 5,
+            "byteOffset": 0,
+            "componentType": 5123,
+            "count": 519,
+            "max": [
+                7945
+            ],
+            "min": [
+                85
+            ],
+            "name": "accessor_buffer_Mesh9 Model_2",
+            "type": "SCALAR"
+        },
+        {
+            "bufferView": 4,
+            "byteOffset": 0,
+            "componentType": 5123,
+            "count": 9,
+            "max": [
+                7271
+            ],
+            "min": [
+                873
+            ],
+            "name": "accessor_buffer_Mesh9 Model_1",
+            "type": "SCALAR"
+        },
+        {
+            "bufferView": 6,
+            "byteOffset": 0,
+            "componentType": 5123,
+            "count": 4089,
+            "max": [
+                7978
+            ],
+            "min": [
+                0
+            ],
+            "name": "accessor_buffer_Mesh9 Model_3",
+            "type": "SCALAR"
+        },
+        {
+            "bufferView": 2,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 7983,
+            "max": [
+                10485.7998046875,
+                10106.2998046875
+            ],
+            "min": [
+                -10485.7998046875,
+                -10133.900390625
+            ],
+            "name": "accessor_buffer_Mesh9 Model_TEXCOORD_0_0",
+            "type": "VEC2"
+        },
+        {
+            "bufferView": 0,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 7983,
+            "max": [
+                448.865234375,
+                372.2312927246094,
+                564.09033203125
+            ],
+            "min": [
+                -448.8642578125,
+                1.4312744140625,
+                -564.08984375
+            ],
+            "name": "accessor_buffer_Mesh9 Model_POSITION_0",
+            "type": "VEC3"
+        }
+    ],
+    "asset": {
+        "copyright": "",
+        "generator": "blendergltf v1.1.0",
+        "version": "2.0"
+    },
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteLength": 95796,
+            "byteOffset": 0,
+            "byteStride": 12,
+            "name": "bufferView_buffer_Mesh9 Model_POSITION_0",
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 95796,
+            "byteOffset": 95796,
+            "byteStride": 12,
+            "name": "bufferView_buffer_Mesh9 Model_NORMAL_0",
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 63864,
+            "byteOffset": 191592,
+            "byteStride": 8,
+            "name": "bufferView_buffer_Mesh9 Model_TEXCOORD_0_0",
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 13052,
+            "byteOffset": 255456,
+            "name": "bufferView_buffer_Mesh9 Model_0",
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 20,
+            "byteOffset": 268508,
+            "name": "bufferView_buffer_Mesh9 Model_1",
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 1040,
+            "byteOffset": 268528,
+            "name": "bufferView_buffer_Mesh9 Model_2",
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 8180,
+            "byteOffset": 269568,
+            "name": "bufferView_buffer_Mesh9 Model_3",
+            "target": 34963
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 277748,
+            "name": "buffer_Pavilion_blender",
+            "uri": "buffer_Pavilion_blender.bin"
+        }
+    ],
+    "materials": [
+        {
+            "doubleSided": false,
+            "emissiveFactor": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "name": "_30",
+            "pbrMetallicRoughness": {
+                "baseColorFactor": [
+                    0.11764699965715408,
+                    0.11764699965715408,
+                    0.11764699965715408,
+                    1.0
+                ],
+                "metallicFactor": 0.0,
+                "roughnessFactor": 1.0
+            }
+        },
+        {
+            "doubleSided": false,
+            "emissiveFactor": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "name": "Color_M04",
+            "pbrMetallicRoughness": {
+                "baseColorFactor": [
+                    0.556863009929657,
+                    0.556863009929657,
+                    0.556863009929657,
+                    1.0
+                ],
+                "metallicFactor": 0.0,
+                "roughnessFactor": 1.0
+            }
+        },
+        {
+            "doubleSided": false,
+            "emissiveFactor": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "name": "Color_M05",
+            "pbrMetallicRoughness": {
+                "baseColorFactor": [
+                    0.4470590054988861,
+                    0.4470590054988861,
+                    0.4470590054988861,
+                    1.0
+                ],
+                "metallicFactor": 0.0,
+                "roughnessFactor": 1.0
+            }
+        },
+        {
+            "doubleSided": false,
+            "emissiveFactor": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "name": "Color_M09",
+            "pbrMetallicRoughness": {
+                "baseColorFactor": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "metallicFactor": 0.0,
+                "roughnessFactor": 1.0
+            }
+        }
+    ],
+    "meshes": [
+        {
+            "name": "Mesh9 Model",
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": 0,
+                        "POSITION": 6,
+                        "TEXCOORD_0": 5
+                    },
+                    "indices": 1,
+                    "material": 3,
+                    "mode": 4
+                },
+                {
+                    "attributes": {
+                        "NORMAL": 0,
+                        "POSITION": 6,
+                        "TEXCOORD_0": 5
+                    },
+                    "indices": 3,
+                    "material": 0,
+                    "mode": 4
+                },
+                {
+                    "attributes": {
+                        "NORMAL": 0,
+                        "POSITION": 6,
+                        "TEXCOORD_0": 5
+                    },
+                    "indices": 2,
+                    "material": 2,
+                    "mode": 4
+                },
+                {
+                    "attributes": {
+                        "NORMAL": 0,
+                        "POSITION": 6,
+                        "TEXCOORD_0": 5
+                    },
+                    "indices": 4,
+                    "material": 1,
+                    "mode": 4
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "mesh": 0,
+            "name": "Mesh9 Model",
+            "rotation": [
+                0.7071068286895752,
+                0.0,
+                0.0,
+                0.7071067094802856
+            ],
+            "scale": [
+                0.009999999776482582,
+                0.009999999776482582,
+                0.009999999776482582
+            ],
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "children": [
+                0
+            ],
+            "matrix": [
+                -1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "name": "Scene_root"
+        }
+    ],
+    "scene": 0,
+    "scenes": [
+        {
+            "extras": {
+                "background_color": [
+                    0.05087608844041824,
+                    0.05087608844041824,
+                    0.05087608844041824
+                ],
+                "frames_per_second": 24
+            },
+            "name": "Scene",
+            "nodes": [
+                1
+            ]
+        }
+    ]
+}

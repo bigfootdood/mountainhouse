@@ -14,15 +14,15 @@
 
       <div id="topbar" class="row">
         <!-- Back Button and Activity Selection -->
-        <div class="col" align="center">
+        <div class="col-sm-4" align="center">
           <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
             <button type="button" onclick="resetCamera()" class="btn btn-secondary">Back</button>
           </div>
         </div>
         <!-- Season Selection -->
-        <div class="col" align="center">
+        <div class="col-sm-4" align="center">
           <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-            <div class="btn-group mr-2" role="group" aria-label="First group">
+            <div class="btn-group btn-group-lg mr-2" role="group" aria-label="First group">
               <button type="button" onclick="seasonChanger(1)" class="btn btn-secondary">Summer</button>
               <button type="button" onclick="seasonChanger(2)" class="btn btn-secondary">Fall</button>
               <button type="button" onclick="seasonChanger(3)" class="btn btn-secondary">Winter</button>
@@ -31,13 +31,33 @@
           </div>
         </div>
         <!-- Animated Sun Logo -->
-        <div class="col" align="center">
+        <div class="col-lg-4" align="center">
           <h1 style="color:white;">Map Tests</h1>
         </div>
 
       </div>
 
       <h1 id="objectTitle" class="text-center"></h1>
+      <p id="more" class="text-center" data-toggle="modal" data-target="#mainModal" onclick="loadModal()"></p>
+      <!-- Modal -->
+      <div class="modal  fade " id="mainModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-full modal-dialog " role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
 
@@ -47,7 +67,17 @@
     <script src="js/libs/three.interaction.js"></script>
     <script src="js/libs/Tween.js"></script>
     <script src="js/libs/GLTFLoader.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <script src="js/libs/EffectComposer.js"></script>
+    <script src="js/libs/RenderPass.js"></script>
+    <script src="js/libs/ShaderPass.js"></script>
+    <script src="js/libs/CopyShader.js"></script>
+    <script src="js/libs/BokehShader.js"></script>
 
+    <!-- <script src="json/test.js"></script> -->
     <!-- Subjects -->
     <script src="js/subjects/lights.js"></script>
     <script src="js/subjects/summer.js"></script>

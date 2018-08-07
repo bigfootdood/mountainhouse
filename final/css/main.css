@@ -10,6 +10,30 @@
   color: white;
 }
 
+#more{
+  z-index: 99;
+  position: relative;
+  color: white;
+}
+
+.modal-full {
+    min-width: 100%;
+    margin: 0;
+    position: fixed;
+}
+
+.modal-dialog{
+  margin:0;
+}
+
+
+
+.modal-full .modal-content {
+    min-height: 100vh;
+    margin:0;
+}
+
+
 canvas {
   width: 100vw;
   height: 100vh;

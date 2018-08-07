@@ -22,7 +22,21 @@ function trigger_animations(scene){
             animating = true;
               moveCamera(node);
               var title = document.getElementById("objectTitle");
-              title.innerHTML = node.name;
+              var more = document.getElementById("more");
+              title.innerHTML = attractions[node.index].name;
+              more.innerHTML = "Find Out More"
+
+              //PRELOAD MODAL WITH INFORMATION
+              var modalTitle = document.getElementById("modalLabel");
+              modalTitle.innerHTML = attractions[node.index].name;
+
+              var modalTitle = document.getElementById("modalBody");
+              modalBody.innerHTML = attractions[node.index].description;
+
+              // $.getJSON("../json/test.json", function(json){
+              //   alert(json.attractions[0].name);
+              // });
+
           });
       }
   } );
@@ -48,18 +62,18 @@ function bounce(object){
 
     new TWEEN.Tween( object.position).to( {
       x: object.position.x,
-      y: object.position.y + .25,
+      y: object.position.y + (.25 * cpy.y),
       z: object.position.z}, 300)
       .easing( TWEEN.Easing.Cubic.Out).start();
 
     object.scale.set(object.scale.x * 1.5,object.scale.y * 1.5,object.scale.z * 1.5);
     object.position.set(object.position.x,object.position.y +.25,object.position.z );
 
-    new TWEEN.Tween( object.position).to( {
-      x: object.position.x,
-      y: object.position.y - .25,
-      z: object.position.z}, 1500).delay(250)
-      .easing( TWEEN.Easing.Elastic.Out).start();
+    // new TWEEN.Tween( object.position).to( {
+    //   x: object.position.x,
+    //   y: object.position.y - (.25 * cpy.y),
+    //   z: object.position.z}, 1500).delay(250)
+    //   .easing( TWEEN.Easing.Elastic.Out).start();
     new TWEEN.Tween( object.scale).to( {
       x: cpy.x,
       y: cpy.y,
