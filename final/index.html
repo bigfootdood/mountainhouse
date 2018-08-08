@@ -9,18 +9,30 @@
   <body>
 
     <!-- User Interface -->
-    <div class="container-fluid">
+    <div class="container">
       <!-- <h1 class="text-center">Test</h1> -->
 
       <div id="topbar" class="row">
         <!-- Back Button and Activity Selection -->
-        <div class="col-lg-4 col-md-6" align="center">
+
+        <div class="col-sm-12 col-md-6" align="center">
           <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-            <button type="button" onclick="resetCamera()" class="btn btn-outline-light" >Back</button>
+            <button type="button" class="btn btn-lg btn-outline-light" onclick="resetCamera()">Back</button>
+            <div class="btn-group-lg" role="group">
+              <button id="btnGroupDrop1" type="button" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Season
+              </button>
+              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" onclick="seasonChanger(1)" href="#">Summer</a>
+                <a class="dropdown-item" onclick="seasonChanger(2)" href="#">Fall</a>
+                <a class="dropdown-item" onclick="seasonChanger(3)" href="#">Winter</a>
+                <a class="dropdown-item" onclick="seasonChanger(4)" href="#">Spring</a>
+              </div>
+            </div>
           </div>
         </div>
         <!-- Season Selection -->
-        <div class="col-lg-4 col-md-6" align="center">
+        <!-- <div class="col-lg-4 col-md-6" align="center">
           <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group btn-group-lg mr-2" role="group" aria-label="First group">
               <button type="button" onclick="seasonChanger(1)" class="btn btn-outline-light">Summer</button>
@@ -29,9 +41,9 @@
               <button type="button" onclick="seasonChanger(4)"class="btn btn-outline-light">Spring</button>
             </div>
           </div>
-        </div>
+        </div> -->
         <!-- Animated Sun Logo -->
-        <div class="col-lg-4 col-md-12" align="center">
+        <div class="col-sm-12 col-md-6 col-lg-4" align="center">
           <h1 id="sunTitle">Map Tests</h1>
         </div>
 

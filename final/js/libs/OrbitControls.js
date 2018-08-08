@@ -58,7 +58,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 	this.rotateSpeed = 0.005;
 
 	// Set to false to disable panning
-	this.enablePan = true;
+	this.enablePan = false;
 	this.panSpeed = 0.005;
 	this.screenSpacePanning = false; // if true, pan in screen-space
 	this.keyPanSpeed = 7.0;	// pixels moved per arrow key push
