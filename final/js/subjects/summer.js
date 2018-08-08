@@ -43,7 +43,7 @@ function Summer(scene,object){
 
         scene.add( gltf.scene );
         summer_objects.push(gltf.scene);
-        console.log(summer_objects)
+        objects = summer_objects;
 
     	}
     );
