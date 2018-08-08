@@ -2,7 +2,7 @@ var count = 0;
 var animating = false;
 function trigger_animations(scene){
   scene.traverse( function( node ) {
-      if ( node instanceof THREE.Mesh && node.selectable ) {
+      if ( node.selectable ) {
           node.on('mouseover', function(ev) {
             // node.scale.set(1.2,1.2,1.2);
             bounce(node);

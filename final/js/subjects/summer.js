@@ -24,32 +24,68 @@ function Summer(scene,object){
       trigger_animations(scene);
     });
 
+    // Load a glTF resource
     loader.load(
-      // resource URL
-      'assets/models/Pavilion/Purple_Units.glb',
-      // called when the resource is loaded
-      function ( gltf ) {
-        // gltf.scene.scale.set(.0001,.0001,.0001);
-        // gltf.scene.traverse(function(node){
-          var purple = gltf.scene.children[0];
-          purple.scale.set(.001,.001,.001);
-          purple.position.set(1.5,0,3);
-          purple.index = 0;
-        //   node.rotation.set(0,0,0);
-        //   summer_objects.push(node);
-        //   node.selectable = true;
-        // });
-        summer_objects.push(purple);
-        objects = summer_objects;
-        for (var i = 0; i < summer_objects.length; i++) {
-          object = summer_objects[i];
-          object.castShadow = true;
-          object.receiveShadow = true;
-          object.selectable = true;
-          scene.add(object);
-        }
-        trigger_animations(scene);
-      });
+    	// resource URL
+    	'assets/models/Pavilion/Pavilion_AllSeasons.glb',
+    	// called when the resource is loaded
+    	function ( gltf ) {
+
+        gltf.scene.traverse(function(node){
+          node.castShadow = true;
+          node.receiveShadow = true;
+        });
+        gltf.scene.scale.set(.004,.004,.004);
+        gltf.scene.position.set(1.5,0,3);
+        gltf.scene.selectable = true;
+        gltf.scene.index = 0;
+
+
+        scene.add( gltf.scene );
+        summer_objects.push(gltf.scene);
+        console.log(summer_objects)
+
+    	}
+    );
+
+    // loader.load(
+    //   // resource URL
+    //   'assets/models/Pavilion/Pavilion_AllSeasons.glb',
+    //   // called when the resource is loaded
+    //   function ( gltf ) {
+    //     // gltf.scene.scale.set(.0001,.0001,.0001);
+    //     var meshWrap = new THREE.Mesh();
+    //     gltf.scene.traverse(function(node){
+    //       if( node instanceof THREE.Mesh){
+    //         node.scale.set(.004,.004,.004);
+    //         meshWrap.add(node);
+    //         // summer_objects.push(node);
+    //       }
+    //       // // var purple = gltf.scene.children[0];
+    //       // node.scale.set(.004,.004,.004);
+    //       // // purple.position.set(1.5,0,3);
+    //       // // purple.index = 0;
+    //       // node.rotation.set(0,0,0);
+    //       // // group.add(node);
+    //       // node.selectable = true;
+    //     });
+    //     // outerMesh.scale.set(.004,.004,.004);
+    //
+    //     // console.log("summer: "+summer_objects);
+    //
+    //     summer_objects.push(meshWrap);
+    //     scene.add(meshWrap)
+    //
+    //     objects = summer_objects;
+    //     // for (var i = 0; i < summer_objects.length; i++) {
+    //     //   object = summer_objects[i];
+    //     //   object.receiveShadow = true;
+    //     //   object.castShadow = true;
+    //     //   object.selectable = true;
+    //     //   scene.add(object);
+    //     // }
+    //     trigger_animations(scene);
+    //   });
 
 
     // var geometry = new THREE.BoxGeometry( 1, 1, 1 );
