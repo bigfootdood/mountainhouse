@@ -234,9 +234,9 @@ function update() {
   requestAnimationFrame( update );
   TWEEN.update();
   controls.update();
-  // var title = document.getElementById("sunTitle");
-  // title.innerHTML = (" "+camera.position.x+" "+camera.position.y+ " "+ camera.position.z);
-  // composer.render();
+  var title = document.getElementById("sunTitle");
+  title.innerHTML = ("Camera: "+Math.round(camera.position.x)+" "+Math.round(camera.position.y)+ " "+ Math.round(camera.position.z)+ "Origin: "+Math.round(camera.position.x)+" "+Math.round(camera.position.y)+ " "+ Math.round(camera.position.z));
+  // // composer.render();
   render();
 
 };

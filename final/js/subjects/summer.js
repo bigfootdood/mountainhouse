@@ -11,6 +11,7 @@ function Summer(scene,object){
     function ( gltf ) {
       gltf.scene.traverse(function(node){
         node.position.set(0,-.61,0);
+        // console.log(node.material);
         summer_objects.push(node);
       });
 
@@ -27,26 +28,31 @@ function Summer(scene,object){
     // Load a glTF resource
     loader.load(
     	// resource URL
-    	'assets/models/Pavilion/Pavilion_AllSeasons.glb',
+    	'assets/models/Pavilion/Pavilion_WinterIceRink.glb',
     	// called when the resource is loaded
     	function ( gltf ) {
 
         gltf.scene.traverse(function(node){
-          node.castShadow = true;
-          node.receiveShadow = true;
+          if (node instanceof THREE.Mesh) {
+            node.receiveShadow = true;
+            node.castShadow = true;
+            console.log("NODE: " + node);
+          }
         });
+        console.log(gltf.scene);
         gltf.scene.scale.set(.004,.004,.004);
-        gltf.scene.position.set(1.5,0,3);
+        gltf.scene.position.set(1.5,2,3);
         gltf.scene.selectable = true;
         gltf.scene.index = 0;
 
 
         scene.add( gltf.scene );
-        summer_objects.push(gltf.scene);
-        objects = summer_objects;
+        // summer_objects.push(gltf.scene);
+        // objects = summer_objects;
 
-    	}
-    );
+    	});
+
+
 
     // loader.load(
     //   // resource URL

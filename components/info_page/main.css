@@ -1,6 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 #infoBox{
-  height:100%;
+  height:100vh;
   background: rgba(51,51,51,0.7);
+  padding: 3em;
+  display: flex;
+  font-family: 'Open Sans',serif;
+  color: white;
+}
+
+#modalTitleRow{
+  position: absolute;
+
+  padding-right: 3em;
+}
+#exitButton{
+  font-size: 4vh;
+  margin-bottom: 4vh;
+}
+#modalTitle{
+  font-size: 5vh;
+  margin-bottom: 4vh;
+}
+#modalPlayButton{
+  height: 50vh;
+}
+#modalDescription{
+  font-size: 3vh;
 }
 
 .learnMore{
@@ -9,13 +35,14 @@
 
 .fullscreen{
   background: url(radavist.jpg) no-repeat center top;
-  background-size: auto 100%;
-  width: 100%;
-  height: 100%;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
   margin: 0;
   top: 0;
   left: 0;
 }
+
 
 .modal-content{
   border: 0;
@@ -23,5 +50,20 @@
 
 .modal-dialog{
   margin: 0;
-  max-width: 100%;
+  max-width: 100vw;
+  height: 100vh;
+}
+.modal-body{
+  padding: 0px;
+}
+.videoModalContent{
+  /* width: 100vw;
+  height: 100vw; */
+  background-color: rgba(51,51,51,0.0);
+}
+
+video{
+  width: 85vw;
+  margin-left: 7.5vw;
+  z-index: 99;
 }

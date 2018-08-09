@@ -27,11 +27,11 @@ function trigger_animations(scene){
               more.innerHTML = "Find Out More"
 
               //PRELOAD MODAL WITH INFORMATION
-              var modalTitle = document.getElementById("modalLabel");
+              var modalTitle = document.getElementById("modalTitle");
               modalTitle.innerHTML = attractions[node.index].name;
 
-              var modalTitle = document.getElementById("modalBody");
-              modalBody.innerHTML = attractions[node.index].description;
+              var modalDescription = document.getElementById("modalDescription");
+              modalDescription.innerHTML = attractions[node.index].description;
 
               // $.getJSON("../json/test.json", function(json){
               //   alert(json.attractions[0].name);
