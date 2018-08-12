@@ -101,54 +101,15 @@ function init(){
 
 
 
-
+  // Helper Cube
   // var geometry = new THREE.BoxGeometry( 1, 1, 1 );
   // var material = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
   // var cube = new THREE.Mesh( geometry, material );
   // cube.name = "cube1";
-  // cube.castShadow = true;
-  // cube.receiveShadow = true;
-  // cube.selectable = true;
-  // cube.animating = false;
-  // cube.position.set(-2,3,0);
   // scene.add(cube);
-  //
-  // var geometry = new THREE.PlaneGeometry( 5, 5, 32 );
-  // var material = new THREE.MeshLambertMaterial( {color: 0xffff00, side: THREE.DoubleSide} );
-  // var plane = new THREE.Mesh( geometry, material );
-  // plane.rotation.set(1.5708,0,0);
-  // plane.position.set(-2,2,0);
-  // plane.castShadow = true;
-  // plane.receiveShadow = true;
-  // plane.name = "plane";
-  // plane.selectable = false;
-  // plane.animating = false;
-  // scene.add(plane);
-  // console.log(plane.material);
 
 
 
-  // light.shadow.mapSize.width = SHADOW_MAP_WIDTH;
-  // light.shadow.mapSize.height = SHADOW_MAP_HEIGHT;
-  // var light = new THREE.HemisphereLight( 0x404040 ); // soft white light
-  // light.intensity = 1;
-  // light.position.set(-20,30,10)
-  // scene.add( light );
-  //
-  // var light = new THREE.SpotLight( 0x404040 ); // soft white light
-  // light.intensity = 3;
-  // light.castShadow = true;
-  // light.target.position.set( 0, 0, 0 );
-  // light.position.set(-20,30,10)
-  // scene.add( light );
-  // var light2 = new THREE.SpotLight( 0x404040 ); // soft white light
-  // light2.intensity = 3;
-  // light2.position.set(-3,-30,-10)
-  // scene.add( light2 );
-
-  // var light3 = new THREE.AmbientLight( 0x404040 ); // soft white light
-  // light3.intensity = 1;
-  // scene.add( light3 );
 }
 
 
@@ -157,7 +118,7 @@ async function seasonChanger(season){
     if (season == 1) {
       current_season = 1;
       refresh();
-      Summer(scene,objects);
+      Test_environment(scene,objects);
     }else if(season ==2) {
       current_season = 2;
       refresh()
@@ -234,9 +195,10 @@ function update() {
   requestAnimationFrame( update );
   TWEEN.update();
   controls.update();
-  var title = document.getElementById("sunTitle");
-  title.innerHTML = ("Camera: "+Math.round(camera.position.x)+" "+Math.round(camera.position.y)+ " "+ Math.round(camera.position.z)+ "Origin: "+Math.round(camera.position.x)+" "+Math.round(camera.position.y)+ " "+ Math.round(camera.position.z));
-  // // composer.render();
+  // var title = document.getElementById("sunTitle");
+  // title.innerHTML = ("Camera: "+Math.round(camera.position.x)+" "+Math.round(camera.position.y)+ " "+ Math.round(camera.position.z)+ "Origin: "+Math.round(camera.position.x)+" "+Math.round(camera.position.y)+ " "+ Math.round(camera.position.z));
+  // composer.render();
+
   render();
 
 };
