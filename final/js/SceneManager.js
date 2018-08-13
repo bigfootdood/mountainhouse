@@ -60,11 +60,6 @@ function init(){
   interaction = new THREE.Interaction(renderer, scene, camera);
   interaction.on;
 
-  // Object Information (name,description,photos...)
-  loadJSON(function(response) {
-    attractions = JSON.parse(response);
-  });
-
   //Orbit Controls
   controls = new THREE.OrbitControls( camera );
   camera.position.set( 0, 5, 9);
@@ -157,7 +152,11 @@ async function seasonChanger(season){
     if (season == 1) {
       current_season = 1;
       refresh();
-      Summer(scene,objects);
+      loadJSON(function(response) {
+        attractions = JSON.parse(response);
+        Test_environment(scene,objects,attractions);
+      });
+      // Summer(scene,objects)
     }else if(season ==2) {
       current_season = 2;
       refresh()
@@ -187,7 +186,7 @@ function loadJSON(callback) {
 
    var xobj = new XMLHttpRequest();
        xobj.overrideMimeType("application/json");
-   xobj.open('GET', 'json/test.json', true); // Replace 'my_data' with the path to your file
+   xobj.open('GET', 'json/test_environment.json', true); // Replace 'my_data' with the path to your file
    xobj.onreadystatechange = function () {
          if (xobj.readyState == 4 && xobj.status == "200") {
            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode

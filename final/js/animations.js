@@ -23,15 +23,15 @@ function trigger_animations(scene){
               moveCamera(node);
               var title = document.getElementById("objectTitle");
               var more = document.getElementById("more");
-              title.innerHTML = attractions[node.index].name;
+              title.innerHTML = node.name;
               more.innerHTML = "Find Out More"
 
               //PRELOAD MODAL WITH INFORMATION
               var modalTitle = document.getElementById("modalTitle");
-              modalTitle.innerHTML = attractions[node.index].name;
+              modalTitle.innerHTML = node.name;
 
               var modalDescription = document.getElementById("modalDescription");
-              modalDescription.innerHTML = attractions[node.index].description;
+              modalDescription.innerHTML = node.description;
 
               // $.getJSON("../json/test.json", function(json){
               //   alert(json.attractions[0].name);
@@ -93,9 +93,9 @@ function moveCamera(object){
   console.log("ANIMATING");
 
   new TWEEN.Tween( camera.position ).to( {
-    x: attractions[object.index].cameraPosition.x,
-    y: attractions[object.index].cameraPosition.y,
-    z: attractions[object.index].cameraPosition.z}, 2400)
+    x: object.cameraPosition.x,
+    y: object.cameraPosition.y,
+    z: object.cameraPosition.z}, 2400)
     .easing( TWEEN.Easing.Cubic.Out).start();
 
   new TWEEN.Tween( controls.target).to( {
