@@ -94,19 +94,6 @@ function init(){
   trigger_animations(scene);
   // animateCamera();
 
-
-
-
-  // var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-  // var material = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
-  // var cube = new THREE.Mesh( geometry, material );
-  // cube.name = "cube1";
-  // cube.castShadow = true;
-  // cube.receiveShadow = true;
-  // cube.selectable = true;
-  // cube.animating = false;
-  // cube.position.set(-2,3,0);
-  // scene.add(cube);
   //
   // var geometry = new THREE.PlaneGeometry( 5, 5, 32 );
   // var material = new THREE.MeshLambertMaterial( {color: 0xffff00, side: THREE.DoubleSide} );
@@ -229,7 +216,15 @@ function onWindowResize(){
     renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
+var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+var material = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
+var cube = new THREE.Mesh( geometry, material );
+cube.name = "cube1";
+cube.position.set(controls.target.x,controls.target.y,controls.target.z);
+scene.add(cube);
+
 function update() {
+  // cube.position.set(controls.target.x,controls.target.y,controls.target.z);
   requestAnimationFrame( update );
   TWEEN.update();
   controls.update();

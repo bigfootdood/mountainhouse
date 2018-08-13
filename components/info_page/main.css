@@ -67,3 +67,40 @@ video{
   margin-left: 7.5vw;
   z-index: 99;
 }
+
+body{
+  background-color: #7ec0ee;
+}
+
+/*buttons*/
+
+@font-face {
+    font-family: GothamLight;
+    src: url("GothamLightRegular.otf") format("opentype");
+}
+.btn-group .dropdown-menu li:hover a {
+  color: #333;
+  background-color: #E6E6E6;
+  border-color: #ADADAD;
+}
+#seasonMenu{
+  width: 100%;
+  border: 1.8;
+  border-color: #014361;
+}
+#seasonButton{
+  width: 100%;
+  font-family: GothamLight;
+  color: #014631;
+  font-size: 16pt;
+  /*border-color: #014631;*/
+  border: 0px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.dropdown-menu.show{
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
+}
