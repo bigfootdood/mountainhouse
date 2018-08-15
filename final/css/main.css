@@ -13,7 +13,9 @@
     src: url("../assets/fonts/AvenirNext.otf") format("opentype");
 }
 #topbar{
-  padding-top: 18px;
+  padding-top: 5vh;
+  /* padding-left: 5vh;
+  padding-right: 5vh; */
   z-index: 90;
   position: relative;
 }
@@ -76,6 +78,8 @@
   text-transform: uppercase;
   font-size: 34pt;
   color: #014631;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 #more{
@@ -102,10 +106,14 @@
   color: #212522;
   background-color: rgb(255,255,255, .3);
 }
+.backArrow{
+  color: #014631;
+  vertical-align: middle;
+}
 #seasonDropdown{
   /* padding-top: 18px;
   padding-left: 18px; */
-  width: 148px;
+  width: 180px;
 }
 #seasonCard{
   background-color: rgba(255, 255, 255, 0.3);
@@ -125,6 +133,12 @@
   background-color: rgba(255, 255, 255, 0);
   font-family: GothamLight;
   font-size: 16pt;
+}
+#expandIcon{
+  color: #014631;
+  padding-right: 10px;
+  width: 2em;
+  vertical-align: middle;
 }
 
 .seasonButton:hover, .seasonButton:visited, .seasonButton:link, .seasonButton:active
@@ -162,10 +176,8 @@
   font-size: 16pt;
   color: #014631;
   border: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 17px;
-  padding-bottom: 17px;
+  margin-left: 10vh;
+  margin-top: 10vw;
 }
 #modalTitleRow{
   position: absolute;
@@ -176,7 +188,8 @@
   /* padding-right: 3em; */
 }
 #modalPlayButton{
-  height: 50vh;
+  color: black;
+  opacity: 88%;
 }
 #modalTitle{
   font-family: GothamBold;
