@@ -8,6 +8,10 @@
     font-family: GothamBold;
     src: url("../assets/fonts/GothamBoldRegular.ttf");
 }
+@font-face {
+    font-family: AvenirNext;
+    src: url("../assets/fonts/AvenirNext.otf") format("opentype");
+}
 #topbar{
   padding-top: 18px;
   z-index: 99;
@@ -27,7 +31,7 @@
   left: 50%;
   transform: translateX(-50%);
   position: fixed;
-  bottom: 20vh;
+  bottom: 10vh;
   z-index: 99;
   background-color: rgba(255, 255, 255, 0.66);
   padding-left: 76px;
@@ -60,16 +64,29 @@
 
 
 /* Season Dropdown Stuff */
+#backButtonButton{
+  font-family: GothamLight;
+  font-size: 16pt;
+  color: #014631;
+  border: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 17px;
+  padding-bottom: 17px;
+}
+#backButtonButton:hover, #backButtonButton:visited, #backButtonButton:link, #backButtonButton:active
+{
+  color: #212522;
+  background-color: rgb(255,255,255, .3);
+}
 #seasonDropdown{
   /* padding-top: 18px;
   padding-left: 18px; */
   width: 148px;
-  font-family: GothamLight;
-  font-size: 16pt;
 }
 #seasonCard{
   background-color: rgba(255, 255, 255, 0.3);
-  border: solid;
+  border: 3px solid;
   border-color: #014631;
 }
 
@@ -82,7 +99,9 @@
   padding-top: 14px;
   padding-bottom: 14px;
   border-radius: 0px;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0);
+  font-family: GothamLight;
+  font-size: 16pt;
 }
 
 .seasonButton:hover, .seasonButton:visited, .seasonButton:link, .seasonButton:active
@@ -102,31 +121,51 @@
 /* Modal stuff*/
 #infoBox{
   height:100vh;
-  background: rgba(51,51,51,0.7);
+  background: rgba(255,255,255,.88);
   padding: 3em;
-  display: flex;
+  /* display: flex; */
   font-family: 'Open Sans',serif;
   color: white;
 }
 
 #modalTitleRow{
   position: absolute;
-
+  top: 35vh;
   padding-right: 3em;
 }
 #exitButton{
-  font-size: 4vh;
-  margin-bottom: 4vh;
-}
-#modalTitle{
-  font-size: 5vh;
-  margin-bottom: 4vh;
+  font-family: GothamLight;
+  font-size: 16pt;
+  color: #014631;
+  border: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 17px;
+  padding-bottom: 17px;
 }
 #modalPlayButton{
   height: 50vh;
 }
+#modalTitle{
+  font-size: 5vh;
+  font-family: GothamBold;
+  font-size: 28pt;
+  color: #014631;
+  text-transform: uppercase;
+}
+#modalSeason{
+  font-family: GothamLight;
+  font-size: 16pt;
+  color: #014631;
+  text-transform: uppercase;
+  padding-bottom:
+}
+
 #modalDescription{
-  font-size: 3vh;
+  font-family: AvenirNext;
+  font-size: 12pt;
+  color: black;
+
 }
 
 

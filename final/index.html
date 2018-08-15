@@ -15,9 +15,10 @@
 
       <div id="topbar" class="row">
         <!-- Back Button and Activity Selection -->
-
-        <div class="col-sm-6 col-md-5">
-          <button id="backButton" type="button" class="btn btn-lg btn-outline-light" onclick="resetCamera()" hidden="true">Back</button>
+        <div id="backButton" class="col-3 col-md-2 col-lg-1" hidden="true">
+          <button id="backButtonButton" type="button" class="btn btn-lg btn-outline-light" onclick="resetCamera()">Back</button>
+        </div>
+        <div class="col-9 col-md-8 col-lg-9 align-self-start">
           <!-- <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
             <button type="button" class="btn btn-lg btn-outline-light" onclick="resetCamera()">Back</button>
             <div class="btn-group-lg" role="group">
@@ -65,7 +66,7 @@
           </div>
         </div>
         <!-- Animated Sun Logo -->
-        <div class="d-none d-sm-none d-md-block col-md-6" align="center">
+        <div class="d-none d-sm-none d-md-block col-md-2" align="center">
           <h1 id="sunTitle">Map Tests</h1>
         </div>
 
@@ -105,20 +106,25 @@
               <div class="row">
                 <div id="infoBox" class="col-md-12 col-lg-6 align-items-center">
                   <div class="row align-self-start">
-                    <a class="btn btn-outline-light btn-lg" data-dismiss="modal" aria-label="Close">
-                      Exit
+                    <a id="exitButton"class="btn btn-outline-light btn-lg" data-dismiss="modal" aria-label="Close">
+                      BACK
                     </a>
                   </div>
-                  <div id="modalTitleRow" class="row ">
-                    <div class="col-9">
-                      <h1 id="modalTitle">Title</h1>
-                    </div>
-                    <div class="col-3">
-                      <a class="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#videoModal">
+
+                  <div id="modalTitleRow" class="row text-center">
+                    <div class="col-12 text-center">
+                      <!-- <a class="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#videoModal">
                         Play
-                      </a>
+                      </a> -->
+                      <a href="#"><i></i></a>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-12">
+                      <h1 id="modalTitle"></h1>
+                    </div>
+                    <div class="col-12">
+                      <h3 id="modalSeason">All Seasons</h3>
+                    </div>
+                    <div class="col-12">
                       <p id="modalDescription"></p>
                     </div>
                   </div>
