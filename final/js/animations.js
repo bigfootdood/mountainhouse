@@ -21,10 +21,14 @@ function trigger_animations(scene){
           node.on('click', function(ev) {
             animating = true;
               moveCamera(node);
+              var titleBox = document.getElementById("objectTitleBox");
+              var backButton = document.getElementById("backButton");
               var title = document.getElementById("objectTitle");
               var more = document.getElementById("more");
               title.innerHTML = node.name;
               more.innerHTML = "Find Out More"
+              titleBox.hidden = false;
+              backButton.hidden = false;
 
               //PRELOAD MODAL WITH INFORMATION
               var modalTitle = document.getElementById("modalTitle");

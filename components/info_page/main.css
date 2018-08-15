@@ -69,7 +69,7 @@ video{
 }
 
 body{
-  background-color: #7ec0ee;
+  background-color: #4EBDC8;
 }
 
 /*buttons*/
@@ -78,29 +78,61 @@ body{
     font-family: GothamLight;
     src: url("GothamLightRegular.otf") format("opentype");
 }
-.btn-group .dropdown-menu li:hover a {
-  color: #333;
-  background-color: #E6E6E6;
-  border-color: #ADADAD;
-}
-#seasonMenu{
-  width: 100%;
-  border: 1.8;
-  border-color: #014361;
-}
-#seasonButton{
-  width: 100%;
+#seasonDropdown{
+  position: fixed;
+  padding-top: 18px;
+  padding-left: 18px;
+  width: 148px;
   font-family: GothamLight;
-  color: #014631;
   font-size: 16pt;
-  /*border-color: #014631;*/
-  border: 0px;
+}
+#seasonCard{
+  background-color: rgba(255, 255, 255, 0.3);
+  border: solid;
+  border-color: #014631;
+}
+
+.seasonButton{
+  color: #014631;
+  width: 100%;
+  height: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-radius: 0px;
   background-color: rgba(255, 255, 255, 0.3);
 }
-.dropdown-menu.show{
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.3);
-  border: 0px;
-  padding: 0px;
-  margin: 0px;
+
+.seasonButton:hover, .seasonButton:visited, .seasonButton:link, .seasonButton:active
+{
+  color: #212522;
+  background-color: rgb(53, 106, 89, .47);s
+}
+.btn:focus, .btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.card-header{
+  border: 0;
+  padding: 0;
+}
+
+#maxDiv{
+  /* z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background-color: purple; */
+}
+
+#learnMore{
+
+  background-color: rgba(255, 255, 255, 0.66);
+  position: absolute;
+  top: 60vh;
+  padding-left: 76px;
+  padding-right: 76px;
+  padding-top: 23px;
+  padding-bottom: 18px;
+  border-radius: 46px;
 }

@@ -195,10 +195,12 @@ function resetCamera() {
     y: 0,
     z: 0}, 2400)
     .easing( TWEEN.Easing.Cubic.Out).onUpdate(function(){controls.update()}).start();
+    var titleBox = document.getElementById("objectTitleBox");
+    titleBox.hidden = true;
+    var backButton = document.getElementById("backButton");
+    backButton.hidden = true;
     var title = document.getElementById("objectTitle");
     title.innerHTML = "";
-
-
     var more = document.getElementById("more");
     more.innerHTML = "";
 }
@@ -216,20 +218,20 @@ function onWindowResize(){
     renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
-var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-var material = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
-var cube = new THREE.Mesh( geometry, material );
-cube.name = "cube1";
-cube.position.set(controls.target.x,controls.target.y,controls.target.z);
-scene.add(cube);
+// var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+// var material = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
+// var cube = new THREE.Mesh( geometry, material );
+// cube.name = "cube1";
+// cube.position.set(controls.target.x,controls.target.y,controls.target.z);
+// scene.add(cube);
 
 function update() {
   // cube.position.set(controls.target.x,controls.target.y,controls.target.z);
   requestAnimationFrame( update );
   TWEEN.update();
   controls.update();
-  var title = document.getElementById("sunTitle");
-  title.innerHTML = ("Camera: "+Math.round(camera.position.x)+" "+Math.round(camera.position.y)+ " "+ Math.round(camera.position.z)+ "Origin: "+Math.round(camera.position.x)+" "+Math.round(camera.position.y)+ " "+ Math.round(camera.position.z));
+  // var title = document.getElementById("sunTitle");
+  // title.innerHTML = ("Camera: "+Math.round(camera.position.x)+" "+Math.round(camera.position.y)+ " "+ Math.round(camera.position.z)+ "Origin: "+Math.round(camera.position.x)+" "+Math.round(camera.position.y)+ " "+ Math.round(camera.position.z));
   // // composer.render();
   render();
 

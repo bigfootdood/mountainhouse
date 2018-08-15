@@ -16,8 +16,9 @@
       <div id="topbar" class="row">
         <!-- Back Button and Activity Selection -->
 
-        <div class="col-sm-6" align="center">
-          <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        <div class="col-sm-6 col-md-5">
+          <button id="backButton" type="button" class="btn btn-lg btn-outline-light" onclick="resetCamera()" hidden="true">Back</button>
+          <!-- <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
             <button type="button" class="btn btn-lg btn-outline-light" onclick="resetCamera()">Back</button>
             <div class="btn-group-lg" role="group">
               <button id="btnGroupDrop1" type="button" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -30,21 +31,41 @@
                 <a class="dropdown-item" onclick="seasonChanger(4)" href="#">Spring</a>
               </div>
             </div>
-          </div>
-        </div>
-        <!-- Season Selection -->
-        <!-- <div class="col-lg-4 col-md-6" align="center">
-          <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-            <div class="btn-group btn-group-lg mr-2" role="group" aria-label="First group">
-              <button type="button" onclick="seasonChanger(1)" class="btn btn-outline-light">Summer</button>
-              <button type="button" onclick="seasonChanger(2)" class="btn btn-outline-light">Fall</button>
-              <button type="button" onclick="seasonChanger(3)" class="btn btn-outline-light">Winter</button>
-              <button type="button" onclick="seasonChanger(4)"class="btn btn-outline-light">Spring</button>
+          </div> -->
+          <div class="accordion" id="seasonDropdown">
+            <div id="seasonCard" class="card">
+              <div class="card-header" id="seasonHeading">
+                <button class="btn seasonButton collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  SEASON
+                </button>
+              </div>
+              <div id="collapseThree" class="collapse" aria-labelledby="seasonHeading" data-parent="#seasonDropdown">
+                <div class="card-header" id="springHeading">
+                    <button class="btn seasonButton collapsed" type="button">
+                      SPRING
+                    </button>
+                </div>
+                <div class="card-header" id="summerHeading">
+                  <button class="btn seasonButton collapsed" type="button">
+                    SUMMER
+                  </button>
+                </div>
+                <div class="card-header" id="autumnHeading">
+                  <button class="btn seasonButton collapsed" type="button">
+                    AUTUMN
+                  </button>
+                </div>
+                <div class="card-header" id="winterHeading">
+                  <button class="btn seasonButton collapsed" type="button">
+                    WINTER
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </div> -->
+        </div>
         <!-- Animated Sun Logo -->
-        <div class="col-sm-6" align="center">
+        <div class="d-none d-sm-none d-md-block col-md-6" align="center">
           <h1 id="sunTitle">Map Tests</h1>
         </div>
 
@@ -52,8 +73,8 @@
     </div>
 
     <!-- Object Description -->
-    <div idf="objectTitleBox" data-toggle="modal" data-target="#mainModal" onclick="loadModal()">
-      <h1 id="objectTitle" class="text-center"></h1>
+    <div id="objectTitleBox" hidden="true" class="text-center" data-toggle="modal" data-target="#mainModal" onclick="loadModal()">
+      <h1 id="objectTitle"></h1>
       <p id="more" class="text-center"></p>
     </div>
 
@@ -78,7 +99,7 @@
     </div> -->
     <div class="modal fade" id="mainModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div id="mainModalDialog" class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content fullscreen">
+        <div class="modal-content modalFullscreen">
           <div class="modal-body">
             <div class="container-fluid">
               <div class="row">

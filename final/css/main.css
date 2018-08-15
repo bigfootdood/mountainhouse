@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-
-#topbar{
-  padding-top: 30px;
-  z-index: 99;
-  position: relative;
+@font-face {
+    font-family: GothamLight;
+    src: url("../assets/fonts/GothamLightRegular.otf") format("opentype");
 }
-
-#objectTitle{
+@font-face {
+    font-family: GothamBold;
+    src: url("../assets/fonts/GothamBoldRegular.ttf");
+}
+#topbar{
+  padding-top: 18px;
   z-index: 99;
   position: relative;
-  color: white;
-  font-family: 'Open Sans',serif;
 }
 
 #sunTitle{
@@ -19,19 +19,87 @@
   color: white;
 }
 
-#more{
-  z-index: 99;
-  position: relative;
-  color: white;
-}
 
 
+/* Title Box */
 #objectTitleBox {
-/* position:fixed; */
-  bottom: 0%;
+  /* display: inline-block; */
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+  bottom: 20vh;
+  z-index: 99;
+  background-color: rgba(255, 255, 255, 0.66);
+  padding-left: 76px;
+  padding-right: 76px;
+  padding-top: 23px;
+  padding-bottom: 0px;
+  border-radius: 90px;
 }
 
-/* Modal  */
+#objectTitle{
+  font-family: GothamBold;
+  text-transform: uppercase;
+  font-size: 34pt;
+  color: #014631;
+}
+
+#more{
+  font-family: GothamLight;
+  font-size: 14pt;
+  color: #014631;
+}
+
+
+#titleWrapper{
+  position: sticky;
+  bottom: 0px;
+  z-index: 99;
+  text-align: center;
+}
+
+
+/* Season Dropdown Stuff */
+#seasonDropdown{
+  /* padding-top: 18px;
+  padding-left: 18px; */
+  width: 148px;
+  font-family: GothamLight;
+  font-size: 16pt;
+}
+#seasonCard{
+  background-color: rgba(255, 255, 255, 0.3);
+  border: solid;
+  border-color: #014631;
+}
+
+.seasonButton{
+  color: #014631;
+  width: 100%;
+  height: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-radius: 0px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.seasonButton:hover, .seasonButton:visited, .seasonButton:link, .seasonButton:active
+{
+  color: #212522;
+  background-color: rgb(53, 106, 89, .47);
+}
+.btn:focus, .btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.card-header{
+  border: 0;
+  padding: 0;
+}
+
+/* Modal stuff*/
 #infoBox{
   height:100vh;
   background: rgba(51,51,51,0.7);
@@ -62,7 +130,7 @@
 }
 
 
-.fullscreen{
+.modalFullscreen{
   background: url(../assets/img/radavist.jpg) no-repeat center top;
   background-size: cover;
   width: 100vw;
@@ -71,7 +139,6 @@
   top: 0;
   left: 0;
 }
-
 
 .modal-content{
   border: 0;

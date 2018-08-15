@@ -15,59 +15,71 @@
     <div class="learnMore overlay">
       <p>THIS IS A TEST</p>S
     </div> -->
-    <!-- <div class="row">
-      <div class="col-sm-4">
-        <div id="seasonMenu" class="btn-group" role="group">
-          <button id="seasonButton" type="button" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            SEASON
-          </button>
-          <div id="seasonDropdown" class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <a class="dropdown-item" href="#">Dropdown link</a>
-            <a class="dropdown-item" href="#">Dropdown link</a>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 ">
+          <div class="accordion" id="seasonDropdown">
+            <div id="seasonCard" class="card">
+              <div class="card-header" id="seasonHeading">
+                <button class="btn seasonButton collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  SEASON
+                </button>
+              </div>
+              <div id="collapseThree" class="collapse" aria-labelledby="seasonHeading" data-parent="#seasonDropdown">
+                <div class="card-header" id="springHeading">
+                    <button class="btn seasonButton collapsed" type="button">
+                      SPRING
+                    </button>
+                </div>
+                <div class="card-header" id="summerHeading">
+                  <button class="btn seasonButton collapsed" type="button">
+                    SUMMER
+                  </button>
+                </div>
+                <div class="card-header" id="autumnHeading">
+                  <button class="btn seasonButton collapsed" type="button">
+                    AUTUMN
+                  </button>
+                </div>
+                <div class="card-header" id="winterHeading">
+                  <button class="btn seasonButton collapsed" type="button">
+                    WINTER
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div> -->
-
-    <div class="accordion" id="accordionExample">
-      <div class="card">
-        <div class="card-header" id="headingThree">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              Season
-            </button>
-          </h5>
-        </div>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-          <div class="card-header" id="headingThree">
-            <button class="btn btn-link collapsed" type="button">
-              SPRING
-            </button>
-          </div>
-          <div class="card-header" id="headingThree">
-            <button class="btn btn-link collapsed" type="button">
-              SUMMER
-            </button>
-          </div>
-          <div class="card-header" id="headingThree">
-            <button class="btn btn-link collapsed" type="button">
-              AUTUMN
-            </button>
-          </div>
-          <div class="card-header" id="headingThree">
-            <button class="btn btn-link collapsed" type="button">
-              WINTER
-            </button>
-          </div>
+      <div class="row">
+        <div class="col">
+          <!-- Button trigger modal -->
+          <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Launch demo modal
+          </button> -->
         </div>
       </div>
     </div>
 
 
-      <!-- Button trigger modal -->
-      <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-        Launch demo modal
-      </button> -->
+
+    <!-- <div class="container-fluid">
+      <div class="row justify content-center">
+        <div id="learnMore" class="col-sm-12 text-center">
+          <h1>THIS IS A TEST</h1>
+          <h3>CLICK FOR MORE DETAILS</h3>
+        </div>
+      </div>
+    </div> -->
+
+    <div id="learnMore" class="text-center">
+      <h1>THIS IS A TEST</h1>
+      <h3>CLICK FOR MORE DETAILS</h3>
+    </div>
+
+    <div id="maxDiv">
+
+    </div>
 
       <!-- Modal -->
       <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
