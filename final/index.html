@@ -8,8 +8,21 @@
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
+    <!-- Temporary Javascript for hiding Loading Screen and Tutorial -->
+    <script type="text/javascript">
+      function hide(me){
+        console.log(me);
+        // var x = document.getElementById(me);
+        me.hidden = true;
+      }
+    </script>
+    <!-- Initial Loading Screen -->
+    <div  id="loadingScreen" class="fullscreen" onclick="hide(loadingScreen)">
+      <img id="loadingLogo"src="assets/img/logo.5x.png" alt="">
+      <h3 id="loadingText" class="text-center">Loading 99%</h3>
+    </div>
 
-    <!-- User Interface -->
+    <!-- Nav Interface -->
     <div class="container-fluid">
       <!-- <h1 class="text-center">Test</h1> -->
 
@@ -18,7 +31,7 @@
         <div id="backButton" class="col-3 col-md-2 col-lg-1" hidden="true">
           <button id="backButtonButton" type="button" class="btn btn-lg btn-outline-light" onclick="resetCamera()">Back</button>
         </div>
-        <div class="col-9 col-md-8 col-lg-9 align-self-start">
+        <div class="col-9 col-md-10 col-lg-11 align-self-start">
           <!-- <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
             <button type="button" class="btn btn-lg btn-outline-light" onclick="resetCamera()">Back</button>
             <div class="btn-group-lg" role="group">
@@ -66,8 +79,9 @@
           </div>
         </div>
         <!-- Animated Sun Logo -->
-        <div class="d-none d-sm-none d-md-block col-md-2" align="center">
-          <h1 id="sunTitle">Map Tests</h1>
+        <div id="logoWrapper" class="d-none d-sm-none d-md-block" align="center">
+          <!-- <h1 id="sunTitle">Map Tests</h1> -->
+          <img id="topbarLogo"src="assets/img/logo.5x.png" alt="">
         </div>
 
       </div>
@@ -78,6 +92,8 @@
       <h1 id="objectTitle"></h1>
       <p id="more" class="text-center"></p>
     </div>
+
+
 
     <!-- Modal -->
     <!-- <div class="modal  fade " id="mainModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -100,7 +116,7 @@
     </div> -->
     <div class="modal fade" id="mainModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div id="mainModalDialog" class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content modalFullscreen">
+        <div id="modalFullscreen" class="modal-content">
           <div class="modal-body">
             <div class="container-fluid">
               <div class="row">
@@ -146,10 +162,7 @@
     <script src="js/libs/three.interaction.js"></script>
     <script src="js/libs/Tween.js"></script>
     <script src="js/libs/GLTFLoader.js"></script>
-    <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+
     <script src="js/libs/EffectComposer.js"></script>
     <script src="js/libs/RenderPass.js"></script>
     <script src="js/libs/ShaderPass.js"></script>

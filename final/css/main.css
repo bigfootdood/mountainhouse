@@ -14,7 +14,7 @@
 }
 #topbar{
   padding-top: 18px;
-  z-index: 99;
+  z-index: 90;
   position: relative;
 }
 
@@ -23,8 +23,38 @@
   color: white;
 }
 
+/* Loading Screen & Tutorial */
+.fullscreen{
+  z-index: 99;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  top: 0;
+  left: 0;
+}
 
+#loadingScreen{
+  background-color: #E1DCC8;
+}
 
+#loadingLogo{
+  width: 50vh;
+  left: 50%;
+  top: 20vh;
+  transform: translateX(-50%);
+  position: fixed;
+}
+#loadingText{
+  top: 65vh;
+  font-family: GothamLight;
+  font-size: 4vh;
+  color: #2c302d;
+  width: 50vh;
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+}
 /* Title Box */
 #objectTitleBox {
   /* display: inline-block; */
@@ -56,7 +86,7 @@
 
 
 
-/* Season Dropdown Stuff */
+/* Nav Stuff*/
 #backButtonButton{
   font-family: GothamLight;
   font-size: 16pt;
@@ -109,6 +139,13 @@
 .card-header{
   border: 0;
   padding: 0;
+}
+#logoWrapper{
+  position: fixed;
+  right: 5vw;
+}
+#topbarLogo{
+  height: 20vh;
 }
 
 /* Modal stuff*/
@@ -169,8 +206,8 @@
 }
 
 
-.modalFullscreen{
-  background: url(../assets/img/radavist.jpg) no-repeat center top;
+#modalFullscreen{
+  /* background: url(../assets/img/radavist.jpg) no-repeat center top !important; */
   background-size: cover;
   width: 100vw;
   height: 100vh;

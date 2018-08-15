@@ -21,7 +21,7 @@ function init(){
 
   //Renderer
   renderer = new THREE.WebGLRenderer({antialias: true});
-  renderer.shadowMapEnabled = true;
+  renderer.shadowMap.enabled = true;
   renderer.shadowMapSoft = false;
   // renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.setSize( window.innerWidth, window.innerHeight );
@@ -71,7 +71,7 @@ function init(){
 
   // light.target.position.set( 0, 0, 0 );
   light.castShadow = true;
-  light.shadowDarkness = 0.5;
+  // light.shadowDarkness = 0.5;
 
   //Set up shadow properties for the light
   light.shadow.mapSize.width = 1024;  // default

@@ -37,9 +37,10 @@ function trigger_animations(scene){
               var modalDescription = document.getElementById("modalDescription");
               modalDescription.innerHTML = node.description;
 
-              // $.getJSON("../json/test.json", function(json){
-              //   alert(json.attractions[0].name);
-              // });
+              // jquery for loading backgrounds
+              $('#modalFullscreen').css('background', 'url('+ node.photo+')');
+              $('#modalFullscreen').css('background-size', 'cover');
+
 
           });
       }

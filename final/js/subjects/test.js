@@ -66,6 +66,8 @@ function loadGlb(object) {
         gltf.scene.cameraPosition.y = object.cameraPosition.y;
         gltf.scene.cameraPosition.z = object.cameraPosition.z;
 
+        gltf.scene.photo = object.photo;
+
 
 
         gltf.scene.selectable = true;
