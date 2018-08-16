@@ -6,11 +6,12 @@ async function Test_environment(scene,object,attractions){
 
   loader.load(
     // resource URL
-    'assets/models/GasStation/GasStation.gltf',
+    'assets/models/terrain/MASTER.glb',
     // called when the resource is loaded
     function ( gltf ) {
       gltf.scene.traverse(function(node){
         node.position.set(0,-.61,0);
+        node.scale.set(.0001,.0001,.0001);
         // console.log(node.material);
         summer_objects.push(node);
       });
@@ -25,16 +26,16 @@ async function Test_environment(scene,object,attractions){
       trigger_animations(scene);
     });
 
-    loadGlb(attractions.Pavilion);
-    loadGlb(attractions.IceRink);
-    loadGlb(attractions.Barn);
-    loadGlb(attractions.Carriage);
-    loadGlb(attractions.DiningRoom);
-    loadGlb(attractions.IndoorPool);
-    loadGlb(attractions.KidsClub);
-    loadGlb(attractions.Porch);
-    loadGlb(attractions.Snowshoes);
-    loadGlb(attractions.SummerHouse);
+    // loadGlb(attractions.Pavilion);
+    // loadGlb(attractions.IceRink);
+    // loadGlb(attractions.Barn);
+    // loadGlb(attractions.Carriage);
+    // loadGlb(attractions.DiningRoom);
+    // loadGlb(attractions.IndoorPool);
+    // loadGlb(attractions.KidsClub);
+    // loadGlb(attractions.Porch);
+    // loadGlb(attractions.Snowshoes);
+    // loadGlb(attractions.SummerHouse);
     console.log(attractions.Pavilion.description);
 
 }
