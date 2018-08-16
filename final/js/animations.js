@@ -108,5 +108,26 @@ function moveCamera(object){
     y: object.position.y,
     z: object.position.z}, 2400)
     .easing( TWEEN.Easing.Cubic.Out).onUpdate(function(){controls.update()}).start();
+}
 
+function resetCamera() {
+  new TWEEN.Tween( camera.position ).to( {
+    x: 0,
+    y: 5,
+    z: 9}, 2400)
+    .easing( TWEEN.Easing.Cubic.Out).start();
+
+  new TWEEN.Tween( controls.target).to( {
+    x: 0,
+    y: 0,
+    z: 0}, 2400)
+    .easing( TWEEN.Easing.Cubic.Out).onUpdate(function(){controls.update()}).start();
+    var titleBox = document.getElementById("objectTitleBox");
+    titleBox.hidden = true;
+    var backButton = document.getElementById("backButton");
+    backButton.hidden = true;
+    var title = document.getElementById("objectTitle");
+    title.innerHTML = "";
+    var more = document.getElementById("more");
+    more.innerHTML = "";
 }

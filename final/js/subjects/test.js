@@ -74,8 +74,8 @@ function loadGlb(object) {
 
 
         scene.add( gltf.scene );
-        summer_objects.push(gltf.scene);
-        objects = summer_objects;
+        // summer_objects.push(gltf.scene);
+        // objects = summer_objects;
 
       }
     );

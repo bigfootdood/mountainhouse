@@ -109,7 +109,6 @@ function init(){
   // console.log(plane.material);
 
 
-
   // light.shadow.mapSize.width = SHADOW_MAP_WIDTH;
   // light.shadow.mapSize.height = SHADOW_MAP_HEIGHT;
   // var light = new THREE.HemisphereLight( 0x404040 ); // soft white light
@@ -131,6 +130,20 @@ function init(){
   // var light3 = new THREE.AmbientLight( 0x404040 ); // soft white light
   // light3.intensity = 1;
   // scene.add( light3 );
+  THREE.DefaultLoadingManager.onLoad = function ( ) {
+    document.getElementById('loadingScreen').style.animation = "fadeOut 1s forwards";
+    startIntro();
+    console.log( 'Loading Complete!');
+
+  };
+
+  THREE.DefaultLoadingManager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+    var percent = Math.round((itemsLoaded/itemsTotal)*100);
+    console.log(percent);
+    document.getElementById('loadingText').innerHTML = "Loading " + percent + "%";
+    console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+
+  };
 }
 
 
@@ -183,26 +196,47 @@ function loadJSON(callback) {
    xobj.send(null);
 }
 
-function resetCamera() {
-  new TWEEN.Tween( camera.position ).to( {
-    x: 0,
-    y: 5,
-    z: 9}, 2400)
-    .easing( TWEEN.Easing.Cubic.Out).start();
 
-  new TWEEN.Tween( controls.target).to( {
-    x: 0,
-    y: 0,
-    z: 0}, 2400)
-    .easing( TWEEN.Easing.Cubic.Out).onUpdate(function(){controls.update()}).start();
-    var titleBox = document.getElementById("objectTitleBox");
-    titleBox.hidden = true;
-    var backButton = document.getElementById("backButton");
-    backButton.hidden = true;
-    var title = document.getElementById("objectTitle");
-    title.innerHTML = "";
-    var more = document.getElementById("more");
-    more.innerHTML = "";
+function loadGlb(object) {
+    loader.load(
+      // resource URL
+      object.path,
+      // called when the resource is loaded
+      function ( gltf ) {
+        // console.log(attractions[j].name);
+        gltf.scene.traverse(function(node){
+          node.castShadow = true;
+          node.receiveShadow = true;
+        });
+        gltf.scene.name = object.name;
+        gltf.scene.description = object.description;
+        // gltf.scene.scale.set(.004,.004,.004);
+        gltf.scene.scale.x = object.scale.x;
+        gltf.scene.scale.y = object.scale.y;
+        gltf.scene.scale.z = object.scale.z;
+        // gltf.scene.position.set(1.5,0,3);
+        gltf.scene.position.x = object.position.x;
+        gltf.scene.position.y = object.position.y;
+        gltf.scene.position.z = object.position.z;
+
+        gltf.scene.cameraPosition = {"x":0,"y":0,"z":0}
+        gltf.scene.cameraPosition.x = object.cameraPosition.x;
+        gltf.scene.cameraPosition.y = object.cameraPosition.y;
+        gltf.scene.cameraPosition.z = object.cameraPosition.z;
+
+        gltf.scene.photo = object.photo;
+
+
+
+        gltf.scene.selectable = true;
+
+
+        scene.add( gltf.scene );
+        // summer_objects.push(gltf.scene);
+        // objects = summer_objects;
+
+      }
+    );
 }
 
 function startIntro(){
@@ -214,16 +248,16 @@ function startIntro(){
   document.getElementById("tutorialOne").style.animation = "fadeOut 1s 5s forwards";
   //Switch to Season text
   document.getElementById("tutorialTwo").style.animation = "fadeIn 1s 6s forwards";
+  //Fade in Season dropdown
   document.getElementById("topbar").style.animation = "fadeIn 1s 7s forwards";
   document.getElementById("tutorialScreen").style.animation = "fadeOut 1s 8s forwards";
-  //Fade in Season dropdown
-    //Open season dropdown?
 }
 
 function endIntro(){
   controls.autoRotate = false;
   // make custom camera animation to do 1 more camera spin AND bounce all objects
   // Set camera to default starting position
+  // Set all fullscreen divs to hidden
 }
 
 
