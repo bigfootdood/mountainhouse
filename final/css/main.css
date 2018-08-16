@@ -12,18 +12,7 @@
     font-family: AvenirNext;
     src: url("../assets/fonts/AvenirNext.otf") format("opentype");
 }
-#topbar{
-  padding-top: 5vh;
-  /* padding-left: 5vh;
-  padding-right: 5vh; */
-  z-index: 90;
-  position: relative;
-}
 
-#sunTitle{
-  font-family: 'Open Sans',serif;
-  color: white;
-}
 
 /* Loading Screen & Tutorial */
 .fullscreen{
@@ -46,17 +35,79 @@
   top: 20vh;
   transform: translateX(-50%);
   position: fixed;
+  /* opacity: 0; */
+  animation: fadeIn 5s;
+  -webkit-animation: fadeIn 5s;
 }
 #loadingText{
   top: 65vh;
   font-family: GothamLight;
   font-size: 4vh;
   color: #2c302d;
-  width: 50vh;
   left: 50%;
   transform: translateX(-50%);
   position: fixed;
 }
+
+#tutorialScreen{
+  z-index: 95;
+  background-color: rgb(128,128,128,.7);
+  /* opacity: .6; */
+}
+.tutorialText{
+  bottom: 50vh;
+  font-family: GothamBold;
+  font-size: 5vh;
+  color: #014631;
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+}
+#tutorialOne{
+}
+#tutorialTwo{
+  opacity: 0;
+}
+
+#topbar{
+  padding-top: 5vh;
+  opacity: 0;
+  /* padding-left: 5vh;
+  padding-right: 5vh; */
+  z-index: 98;
+  position: relative;
+}
+#sunTitle{
+  font-family: 'Open Sans',serif;
+  color: white;
+}
+#seasonDropdownText{
+  bottom: 50vh;
+  font-family: GothamBold;
+  font-size: 5vh;
+  color: #014631;
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+}
+.tutorialImage{
+  left: 50%;
+  bottom: 35vh;
+  transform: translateX(-50%);
+  position: fixed;
+}
+#click{
+  opacity: 0;
+}
+#zoom{
+  animation-delay: 3s;
+  opacity: 0;
+}
+#rotate{
+  animation-delay: 6s;
+  opacity: 0;
+}
+
 /* Title Box */
 #objectTitleBox {
   /* display: inline-block; */
@@ -64,7 +115,7 @@
   transform: translateX(-50%);
   position: fixed;
   bottom: 10vh;
-  z-index: 99;
+  z-index: 90;
   background-color: rgba(255, 255, 255, 0.66);
   padding-left: 76px;
   padding-right: 76px;
@@ -298,4 +349,78 @@ canvas {
   top: 0;
   left: 0;
   z-index: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+@keyframes mymove {
+    from {top: 0px;}
+    to {top: 200px;}
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+  50%{
+    opacity: 1;
+  }
+
+  100%{
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10%{
+    opacity: 1;
+  }
+  90%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
 }

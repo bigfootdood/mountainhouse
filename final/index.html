@@ -15,13 +15,24 @@
       function hide(me){
         console.log(me);
         // var x = document.getElementById(me);
+        // me.style.animation = "fadeOut 3s"
+        // me.style.opacity = 0;
         me.hidden = true;
       }
     </script>
+
     <!-- Initial Loading Screen -->
-    <div  id="loadingScreen" class="fullscreen" onclick="hide(loadingScreen)">
+    <div  id="loadingScreen" class="fullscreen" onclick="hide(loadingScreen);startIntro()">
       <img id="loadingLogo"src="assets/img/logo.5x.png" alt="">
       <h3 id="loadingText" class="text-center">Loading 99%</h3>
+    </div>
+    <!-- Transparent Tutorial Screens -->
+    <div id="tutorialScreen" class="fullscreen" onclick="hide(tutorialScreen);endIntro();resetCamera()">
+      <h1 id="tutorialOne" class="text-center tutorialText">CLICK, DRAG, ROTATE ANYWHERE TO EXPLORE</h1>
+      <img id="click" class="tutorialImage" src="assets/icons/CLICK.png" alt="">
+      <img id="zoom" class="tutorialImage"  src="assets/icons/DRAG.png" alt="">
+      <img id="rotate" class="tutorialImage" src="assets/icons/ROTATE.png" alt="">
+      <h1 id="tutorialTwo" class="text-center tutorialText">FIND OUT DIFFERNT THINGS TO DO IN DIFFERENT SEASONS</h1>
     </div>
 
     <!-- Nav Interface -->

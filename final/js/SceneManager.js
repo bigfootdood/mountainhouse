@@ -205,8 +205,25 @@ function resetCamera() {
     more.innerHTML = "";
 }
 
-function loadModal(){
+function startIntro(){
+  controls.autoRotate = true; //upgrade to custom camera animation
+  //Transition between 3 different Icons
+  document.getElementById("click").style.animation = "fadeInOut 2s";
+  document.getElementById("zoom").style.animation = "fadeInOut 2s 2s";
+  document.getElementById("rotate").style.animation = "fadeInOut 2s 4s";
+  document.getElementById("tutorialOne").style.animation = "fadeOut 1s 5s forwards";
+  //Switch to Season text
+  document.getElementById("tutorialTwo").style.animation = "fadeIn 1s 6s forwards";
+  document.getElementById("topbar").style.animation = "fadeIn 1s 7s forwards";
+  document.getElementById("tutorialScreen").style.animation = "fadeOut 1s 8s forwards";
+  //Fade in Season dropdown
+    //Open season dropdown?
+}
 
+function endIntro(){
+  controls.autoRotate = false;
+  // make custom camera animation to do 1 more camera spin AND bounce all objects
+  // Set camera to default starting position
 }
 
 
