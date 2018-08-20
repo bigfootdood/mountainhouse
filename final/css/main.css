@@ -71,7 +71,7 @@
 
 #topbar{
   padding-top: 5vh;
-  opacity: 0;
+  /* opacity: 0; */
   z-index: 98;
   position: relative;
 }

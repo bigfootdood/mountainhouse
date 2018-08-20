@@ -1,13 +1,20 @@
 var camera, scene, renderer;
 var controls, current_season;
 var interaction;
+
 var objects = [];
+var allSeasons = [];
+var springSummerFall = [];
+var summer = [];
+var winter = [];
+
 var attractions;
 var composer;
 
 init();
 update();
 
+//init function to set up scene/renderer and load initial map
 function init(){
 
   //create scene
@@ -27,35 +34,6 @@ function init(){
   renderer.setSize( window.innerWidth, window.innerHeight );
   document.body.appendChild( renderer.domElement );
 
-  // Postprocessing composer
-  // var renderPass = new THREE.RenderPass( scene, camera );
-  //
-  // var copyPass = new THREE.ShaderPass( THREE.CopyShader );
-  // copyPass.renderToScreen = true;
-  //
-  // var bokehPass = new THREE.ShaderPass(THREE.BokehShader);
-  //
-  // composer = new THREE.EffectComposer( renderer );
-  // composer.addPass( renderPass );
-  // composer.addPass(bokehPass);
-  // composer.addPass( copyPass );
-  //
-  //
-  // composer.render( 0.05 );
-
-
-  // renderer.shadowCameraNear = 3;
-  // renderer.shadowCameraFar = camera.far;
-  // renderer.shadowCameraFov = 50;
-  // // renderer.shadowMapDarkness = 0.5;
-  // renderer.shadowMapWidth = 1024;
-  // renderer.shadowMapHeight = 1024;
-  // renderer.shadowMapDebug = true; 50;
-  // renderer.shadowMapDarkness = 0.5;
-  // renderer.shadowMapWidth = 512;
-  // renderer.shadowMapHeight = 512;
-  // renderer.shadowMapDebug = true;
-
   // Object Interaction
   interaction = new THREE.Interaction(renderer, scene, camera);
   interaction.on;
@@ -71,79 +49,77 @@ function init(){
 
   // light.target.position.set( 0, 0, 0 );
   light.castShadow = true;
+  scene.add(light);
   // light.shadowDarkness = 0.5;
 
   //Set up shadow properties for the light
-  light.shadow.mapSize.width = 1024;  // default
-  light.shadow.mapSize.height = 1024; // default
-  light.shadow.camera.near = 5;       // default
-  light.shadow.camera.far = 15;   // default
+  light.shadow.mapSize.width = 4096;
+  light.shadow.mapSize.height = 4096;
+  light.shadow.camera.near = 2;
+  light.shadow.camera.far = 20;
   // light.shadow = new THREE.LightShadow( new THREE.PerspectiveCamera( 50, 1, 1200, 2500 ) );
   // light.shadow.bias = 0.0001;
   light.shadow.bias = - 0.01;
-  scene.add(light);
+
 
   var ambient = new THREE.AmbientLight(0xfffffff);
-  ambient.intensity = 1;
+  ambient.intensity = 0.2;
   scene.add(ambient);
 
-  // var helper = new THREE.CameraHelper( light.shadow.camera );
-  // scene.add( helper );
+  //Camera Shadow Box Helper
+  var helper = new THREE.CameraHelper( light.shadow.camera );
+  scene.add( helper );
 
-  seasonChanger(1);
+  // seasonChanger(1);
   trigger_animations(scene);
-  // animateCamera();
+  // animateCamera()
 
-  //
-  // var geometry = new THREE.PlaneGeometry( 5, 5, 32 );
-  // var material = new THREE.MeshLambertMaterial( {color: 0xffff00, side: THREE.DoubleSide} );
-  // var plane = new THREE.Mesh( geometry, material );
-  // plane.rotation.set(1.5708,0,0);
-  // plane.position.set(-2,2,0);
-  // plane.castShadow = true;
-  // plane.receiveShadow = true;
-  // plane.name = "plane";
-  // plane.selectable = false;
-  // plane.animating = false;
-  // scene.add(plane);
-  // console.log(plane.material);
+  // Load main Terrain (default master terrain for testing)
+  loader.load(
+  	'assets/models/terrain/MASTER.glb',
+  	function ( gltf ) {
 
 
-  // light.shadow.mapSize.width = SHADOW_MAP_WIDTH;
-  // light.shadow.mapSize.height = SHADOW_MAP_HEIGHT;
-  // var light = new THREE.HemisphereLight( 0x404040 ); // soft white light
-  // light.intensity = 1;
-  // light.position.set(-20,30,10)
-  // scene.add( light );
-  //
-  // var light = new THREE.SpotLight( 0x404040 ); // soft white light
-  // light.intensity = 3;
-  // light.castShadow = true;
-  // light.target.position.set( 0, 0, 0 );
-  // light.position.set(-20,30,10)
-  // scene.add( light );
-  // var light2 = new THREE.SpotLight( 0x404040 ); // soft white light
-  // light2.intensity = 3;
-  // light2.position.set(-3,-30,-10)
-  // scene.add( light2 );
+      gltf.scene.scale.set(.001,.001,.001);
+      gltf.scene.traverse(function(node){
+        // node.scale.set(.0001,.0001,.0001);
+        node.castShadow = true;
+        node.receiveShadow =true;
+      });
+      scene.add( gltf.scene );
+      objects.push(gltf.scene )
 
-  // var light3 = new THREE.AmbientLight( 0x404040 ); // soft white light
-  // light3.intensity = 1;
-  // scene.add( light3 );
+  	},
+  	// called while loading is progressing
+  	function ( xhr ) {
+
+  		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+  	},
+  	// called when loading has errors
+  	function ( error ) {
+
+  		console.log( 'An error happened' );
+
+  	}
+  );
+
+
+  //Have loading screen update on Loading Manager
   THREE.DefaultLoadingManager.onLoad = function ( ) {
-    document.getElementById('loadingScreen').style.animation = "fadeOut 1s forwards";
-    startIntro();
+    // document.getElementById('loadingScreen').style.animation = "fadeOut 1s forwards";
+    // startIntro();
     console.log( 'Loading Complete!');
-
+    console.log( objects);
   };
 
-  THREE.DefaultLoadingManager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
-    var percent = Math.round((itemsLoaded/itemsTotal)*100);
-    console.log(percent);
-    document.getElementById('loadingText').innerHTML = "Loading " + percent + "%";
-    console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
-
-  };
+  // THREE.DefaultLoadingManager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+  //   var percent = Math.round((itemsLoaded/itemsTotal)*100);
+  //   console.log(percent);
+  //   document.getElementById('loadingText').innerHTML = "Loading " + percent + "%";
+  //   console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+  //
+  // };
 }
 
 
@@ -152,23 +128,37 @@ async function seasonChanger(season){
     if (season == 1) {
       current_season = 1;
       refresh();
-      loadJSON(function(response) {
-        attractions = JSON.parse(response);
-        Test_environment(scene,objects,attractions);
-      });
+      // Re-open loading manager
+      // load summer Terrain
+      // load models from json file for spring
+
+      // loadJSON(function(response) {
+      //   attractions = JSON.parse(response);
+      //   // Test_environment(scene,objects,attractions);
+      // });
       // Summer(scene,objects)
     }else if(season ==2) {
       current_season = 2;
-      refresh()
-      GasStation(scene,objects);
+      refresh();
+      // Re-open loading manager
+      // load fall Terrain
+      loadGlb()
+      // load models from json file for fall
+
     }else if (season == 3) {
       current_season = 3;
       refresh();
-      Winter(scene,objects);
+      // Re-open loading manager
+      // load fall Terrain
+      // load models from json file for fall
+
     }else if (season == 4) {
       current_season = 4;
       refresh();
-      Summer(scene,objects);
+      // Re-open loading manager
+      // load spring Terrain
+      // load models from json file for spring
+
     }
     trigger_animations(scene);
 }
@@ -196,7 +186,7 @@ function loadJSON(callback) {
    xobj.send(null);
 }
 
-
+//Render gltf model from object
 function loadGlb(object) {
     loader.load(
       // resource URL
@@ -269,21 +259,14 @@ function onWindowResize(){
     renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
-// var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-// var material = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
-// var cube = new THREE.Mesh( geometry, material );
-// cube.name = "cube1";
-// cube.position.set(controls.target.x,controls.target.y,controls.target.z);
-// scene.add(cube);
 
-function update() {
-  // cube.position.set(controls.target.x,controls.target.y,controls.target.z);
+function update(cube) {
+
   requestAnimationFrame( update );
   TWEEN.update();
   controls.update();
-  // var title = document.getElementById("sunTitle");
-  // title.innerHTML = ("Camera: "+Math.round(camera.position.x)+" "+Math.round(camera.position.y)+ " "+ Math.round(camera.position.z)+ "Origin: "+Math.round(camera.position.x)+" "+Math.round(camera.position.y)+ " "+ Math.round(camera.position.z));
-  // // composer.render();
+  var title = document.getElementById("sunTitle");
+  title.innerHTML = ("Camera: "+Math.round(camera.position.x)+" "+Math.round(camera.position.y)+ " "+ Math.round(camera.position.z)+ "Origin: "+Math.round(controls.target.x)+" "+Math.round(controls.target.y)+ " "+ Math.round(controls.target.z));
   render();
 
 };
