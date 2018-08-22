@@ -24,7 +24,7 @@
       "z":0
     },
     "season":"1",
-    "photo":"../assets/img/mohonk.jpg",
+    "photo":"assets/img/mohonk.jpg",
     "video":""
   },
   "granary":{
@@ -52,7 +52,7 @@
       "z":0
     },
     "season":"1",
-    "photo":"../assets/img/mohonk.jpg",
+    "photo":"assets/img/mohonk.jpg",
     "video":""
   },
   "beach":{
@@ -80,7 +80,7 @@
       "z":0
     },
     "season":"1",
-    "photo":"../assets/img/mohonk.jpg",
+    "photo":"assets/img/mohonk.jpg",
     "video":""
   },
   "paddleBoard":{
@@ -108,7 +108,7 @@
       "z":0
     },
     "season":"1",
-    "photo":"../assets/img/mohonk.jpg",
+    "photo":"assets/img/mohonk.jpg",
     "video":""
   },
   "forestBathing":{
@@ -136,7 +136,7 @@
       "z":0
     },
     "season":"2",
-    "photo":"../assets/img/mohonk.jpg",
+    "photo":"assets/img/mohonk.jpg",
     "video":""
   }
 }

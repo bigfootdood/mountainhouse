@@ -129,7 +129,8 @@ async function init(){
 
   //Have loading screen update on Loading Manager
   THREE.DefaultLoadingManager.onLoad = function ( ) {
-    document.getElementById('loadingScreen').style.animation = "fadeOut 1s forwards";
+    document.getElementById('loadingScreen').style.animation = "fadeOut 1s";
+    document.getElementById('loadingScreen').style.opacity = 0;
     // startIntro();
     console.log( 'Loading Complete!');
     trigger_animations(scene);

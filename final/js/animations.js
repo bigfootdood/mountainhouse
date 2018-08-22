@@ -38,6 +38,7 @@ function trigger_animations(scene){
               modalDescription.innerHTML = node.description;
 
               // jquery for loading backgrounds
+              console.log(node.photo);
               $('#modalFullscreen').css('background', 'url('+ node.photo +')');
               $('#modalFullscreen').css('background-size', 'cover');
 

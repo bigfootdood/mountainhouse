@@ -24,7 +24,7 @@
       "z": 10
     },
     "season":"0",
-    "photo":"assets/img/",
+    "photo":"assets/img/mohonk.jpg",
     "video":""
   },
   "spa":{
@@ -52,7 +52,7 @@
       "z":10
     },
     "season":"",
-    "photo":"assets/img/",
+    "photo":"assets/img/mohonk.jpg",
     "video":""
   },
   "diningRoom":{
@@ -80,7 +80,7 @@
       "z":10
     },
     "season":"0",
-    "photo":"assets/img/",
+    "photo":"assets/img/mohonk.jpg",
     "video":""
   },
   "greenhouse":{
@@ -108,7 +108,7 @@
       "z":10
     },
     "season":"0",
-    "photo":"assets/img/",
+    "photo":"assets/img/mohonk.jpg",
     "video":""
   },
   "indoorPool":{
@@ -136,7 +136,7 @@
       "z":10
     },
     "season":"0",
-    "photo":"assets/img/",
+    "photo":"assets/img/mohonk.jpg",
     "video":""
   },
   "barn":{
@@ -164,7 +164,7 @@
       "z":10
     },
     "season":"0",
-    "photo":"assets/img/",
+    "photo":"assets/img/mohonk.jpg",
     "video":""
   },
   "kidsClub":{
@@ -192,7 +192,7 @@
       "z":0
     },
     "season":"0",
-    "photo":"assets/img/",
+    "photo":"assets/img/mohonk.jpg",
     "video":""
   }
 }
