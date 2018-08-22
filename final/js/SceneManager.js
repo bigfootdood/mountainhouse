@@ -36,8 +36,8 @@ async function init(){
   //Renderer
   renderer = new THREE.WebGLRenderer({antialias: true});
   renderer.shadowMap.enabled = true;
-  renderer.shadowMapSoft = false;
-  // renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.shadowMapSoft = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.setSize( window.innerWidth, window.innerHeight );
   document.body.appendChild( renderer.domElement );
 
@@ -79,25 +79,26 @@ async function init(){
 
   // Lighting
   var light = new THREE.DirectionalLight( 0xffffff, 1, 100);
-  light.position.set(-5,10,-3);
-  light.intensity = 1;
+  light.position.set(-30,60,45);
+  light.intensity = 0.4;
   light.castShadow = true;
   scene.add(light);
 
+
   light.shadow.mapSize.width = 4096;
   light.shadow.mapSize.height = 4096;
-  light.shadow.camera.near = 2;
-  light.shadow.camera.right = 45;
-  light.shadow.camera.left = -45;
-  light.shadow.camera.top = 45;
-  light.shadow.camera.bottom = -45;
-  light.shadow.camera.far = 20;
+  light.shadow.camera.near = 60;
+  light.shadow.camera.right = 25;
+  light.shadow.camera.left = -25;
+  light.shadow.camera.top = 25;
+  light.shadow.camera.bottom = -25;
+  light.shadow.camera.far = 115;
   // light.shadow = new THREE.LightShadow( new THREE.PerspectiveCamera( 50, 1, 1200, 2500 ) );
   // light.shadow.bias = 0.0001;
   light.shadow.bias = - 0.01;
 
   var ambient = new THREE.AmbientLight(0xfffffff);
-  ambient.intensity = 0.2;
+  ambient.intensity = 0.6;
   scene.add(ambient);
 
   //Camera Shadow Box Helper
