@@ -6,8 +6,9 @@ var interaction;
 var objects = [];
 var terrains;
 var allSeasons;
-var springSummerFall;
+var spring;
 var summer;
+var fall;
 var winter;
 
 var attractions;
@@ -23,7 +24,7 @@ async function init(){
 
   //create scene
   scene = new THREE.Scene();
-  scene.background = new THREE.Color( 0x7EC0EE);
+  scene.background = new THREE.Color( 0x4FAFFF);
 
   // Camera
   camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
@@ -44,8 +45,14 @@ async function init(){
 
   });
 
+  await loadJSON('json/spring.json',function(response) {
+    spring = JSON.parse(response);
+  });
   await loadJSON('json/summer.json',function(response) {
     summer = JSON.parse(response);
+  });
+  await loadJSON('json/fall.json',function(response) {
+    fall = JSON.parse(response);
   });
   await loadJSON('json/winter.json',function(response) {
     winter = JSON.parse(response);
@@ -53,7 +60,7 @@ async function init(){
   //Models that exist in every season
   await loadJSON('json/allSeasons.json',async function(response) {
     allSeasons = JSON.parse(response);
-    seasonChanger(0); //Load inital season after parsing json
+    seasonChanger(1); //Load inital season after parsing json
     // console.log("allseasons: " + allSeasons.tower);
   });
 
@@ -97,35 +104,35 @@ async function init(){
 
   // animateCamera()
 
-  // Load main Terrain (default master terrain for testing)
-  loader.load(
-  	'assets/models/terrain/MASTER.glb',
-  	function ( gltf ) {
-
-
-      gltf.scene.scale.set(.001,.001,.001);
-      gltf.scene.traverse(function(node){
-        // node.scale.set(.0001,.0001,.0001);
-        node.castShadow = true;
-        node.receiveShadow =true;
-      });
-      scene.add( gltf.scene );
-      objects.push(gltf.scene )
-
-  	},
-  	// called while loading is progressing
-  	function ( xhr ) {
-
-  		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-
-  	},
-  	// called when loading has errors
-  	function ( error ) {
-
-  		console.log( 'An error happened' );
-
-  	}
-  );
+  // // Load main Terrain (default master terrain for testing)
+  // loader.load(
+  // 	'assets/models/terrain/MASTER.glb',
+  // 	function ( gltf ) {
+  //
+  //
+  //     gltf.scene.scale.set(.001,.001,.001);
+  //     gltf.scene.traverse(function(node){
+  //       // node.scale.set(.0001,.0001,.0001);
+  //       node.castShadow = true;
+  //       node.receiveShadow =true;
+  //     });
+  //     scene.add( gltf.scene );
+  //     objects.push(gltf.scene )
+  //
+  // 	},
+  // 	// called while loading is progressing
+  // 	function ( xhr ) {
+  //
+  // 		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+  //
+  // 	},
+  // 	// called when loading has errors
+  // 	function ( error ) {
+  //
+  // 		console.log( 'An error happened' );
+  //
+  // 	}
+  // );
 
   //Have loading screen update on Loading Manager
   THREE.DefaultLoadingManager.onLoad = function ( ) {
@@ -148,16 +155,17 @@ async function init(){
 
 // Refresh scene and switch to selected Season
 async function seasonChanger(season){
+    // Trigger Loading Screen
     document.getElementById('loadingScreen').style.opacity = 1;
+    // Load models used in all seasons
     for (var key in allSeasons){
-      // console.log("Loading: " + allSeasons[key]);
       loadGlb(allSeasons[key], true);
     }
-    // await testGlb(winter.forestBathing);
+    // Positional Testing
+    // await testGlb(spring.garden);
     if (season == 0) {
       //TESTING SEASON
       current_season = 0;
-      // load models from json file for spring
     }else if(season == 1) {
       current_season = 1;
       refresh();
@@ -165,7 +173,10 @@ async function seasonChanger(season){
       // load spring Terrain
       loadGlb(terrains.summerTerrain,false);
       // load models from json file for spring
-
+      for (var key in spring){
+        // console.log("Loading Summer: " + summer[key]);
+        loadGlb(spring[key], true);
+      }
       // loadJSON(function(response) {
       //   attractions = JSON.parse(response);
       //   // Test_environment(scene,objects,attractions);
@@ -190,6 +201,10 @@ async function seasonChanger(season){
       // load fall Terrain
       loadGlb(terrains.fallTerrain,false);
       // load models from json file for fall
+      for (var key in fall){
+        // console.log("Loading Summer: " + summer[key]);
+        loadGlb(fall[key], true);
+      }
 
     }else if (season == 4) {
       current_season = 4;
@@ -262,6 +277,7 @@ function loadGlb(object,selectable) {
         gltf.scene.cameraPosition.z = object.cameraPosition.z;
 
         gltf.scene.photo = object.photo;
+        gltf.scene.video = object.video;
 
 
         if (selectable) {
@@ -351,7 +367,7 @@ function update() {
   // if (globalTest) {
   //   globalTest.position.copy(controls.target);
   //   // globalTest.rotation.copy(camera.rotation);
-  //   // globalTest.rotation.z = camera.position.z;
+  //   // globalTest.rotation.x = camera.position.z;
   //   globalTest.position.y = camera.position.y - 1;
   //
   // }

@@ -83,6 +83,34 @@
     "photo":"assets/img/mohonk.jpg",
     "video":""
   },
+  "hotChocolate":{
+    "name":"Hot Chocolate on the Porch",
+    "description":"Have some hot chocolate on the porch!",
+    "path":"assets/models/porch/Porch_HotChoco.gltf",
+    "position":{
+      "x":"-1.25",
+      "y":"0",
+      "z":"0.52"
+    },
+    "scale":{
+      "x":".001",
+      "y":".001",
+      "z":".001"
+    },
+    "rotation":{
+      "x":0,
+      "y":0,
+      "z":0
+    },
+    "cameraPosition":{
+      "x":0,
+      "y":0,
+      "z":0
+    },
+    "season":"2",
+    "photo":"assets/img/mohonk.jpg",
+    "video":""
+  },
   "forestBathing":{
     "name":"Forest Bathing",
     "description":"Go for a stroll in a winter wonderland",

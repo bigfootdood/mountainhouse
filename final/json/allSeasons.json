@@ -84,8 +84,8 @@
     "video":""
   },
   "greenhouse":{
-    "name":"Greenhouse",
-    "description":"The greenhouse",
+    "name":"THE GREENHOUSE",
+    "description":"Just a short walk from the Mountain House, the Greenhouse provides visitors with a year-round glimpse at where our award-winning gardens get their start. Visit the Greenhouse to meet Mohonk Mountain House horticulturists and gardeners.",
     "path":"assets/models/greenhouse/Greenhouse_.gltf",
     "position":{
       "x":"20.4162",
@@ -103,13 +103,13 @@
       "z":0
     },
     "cameraPosition":{
-      "x":10,
-      "y":10,
-      "z":10
+      "x":17,
+      "y":3,
+      "z":-9
     },
     "season":"0",
-    "photo":"assets/img/mohonk.jpg",
-    "video":""
+    "photo":"assets/img/TheGreenHouse.jpg",
+    "video":"https://s3.amazonaws.com/mohonk-videos/Greenhouse.mp4"
   },
   "indoorPool":{
     "name":"Indoor Pool",

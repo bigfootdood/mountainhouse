@@ -57,15 +57,15 @@
   padding: 0px;
 }
 .videoModalContent{
-  /* width: 100vw;
-  height: 100vw; */
-  background-color: rgba(51,51,51,0.0);
+  width: 100vw;
+  height: 100vw;
+  z-index: 99;
+  background-color: black;
 }
 
 video{
   width: 85vw;
   margin-left: 7.5vw;
-  z-index: 99;
 }
 
 body{

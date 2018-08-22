@@ -1,12 +1,14 @@
 var count = 0;
 var animating = false;
-function trigger_animations(scene){
+function trigger_animations(scene,objects){
   scene.traverse( function( node ) {
+
+
       if ( node.selectable ) {
+          // console.log(node);
           node.on('mouseover', function(ev) {
             // node.scale.set(1.2,1.2,1.2);
             bounce(node);
-            // console.log(node);
           });
           // node.on('mouseout', function(ev) {
           //   node.scale.set(1,1,1);
@@ -18,32 +20,36 @@ function trigger_animations(scene){
           // node.on('touchstart', function(ev) {
           //   node.scale(1,1,1);
           // });
-          node.on('click', function(ev) {
-            animating = true;
-              moveCamera(node);
-              var titleBox = document.getElementById("objectTitleBox");
-              var backButton = document.getElementById("backButton");
-              var title = document.getElementById("objectTitle");
-              var more = document.getElementById("more");
-              title.innerHTML = node.name;
-              more.innerHTML = "Find Out More"
-              titleBox.hidden = false;
-              backButton.hidden = false;
+          if (node.name === "THE GREENHOUSE") {
+            node.on('click', function(ev) {
+              animating = true;
+                moveCamera(node);
+                var titleBox = document.getElementById("objectTitleBox");
+                var backButton = document.getElementById("backButton");
+                var title = document.getElementById("objectTitle");
+                var more = document.getElementById("more");
+                title.innerHTML = node.name;
+                more.innerHTML = "Find Out More"
+                titleBox.hidden = false;
+                backButton.hidden = false;
 
-              //PRELOAD MODAL WITH INFORMATION
-              var modalTitle = document.getElementById("modalTitle");
-              modalTitle.innerHTML = node.name;
+                //PRELOAD MODAL WITH INFORMATION
+                var modalTitle = document.getElementById("modalTitle");
+                modalTitle.innerHTML = node.name;
 
-              var modalDescription = document.getElementById("modalDescription");
-              modalDescription.innerHTML = node.description;
+                var modalDescription = document.getElementById("modalDescription");
+                modalDescription.innerHTML = node.description;
 
-              // jquery for loading backgrounds
-              console.log(node.photo);
-              $('#modalFullscreen').css('background', 'url('+ node.photo +')');
-              $('#modalFullscreen').css('background-size', 'cover');
+                // jquery for loading backgrounds
+                // console.log(node.photo);
+                $('#modalFullscreen').css('background', 'url('+ node.photo +')');
+                $('#modalFullscreen').css('background-size', 'cover');
+                var video = document.getElementById("mainVideo")
+                video.src = node.video;
 
 
-          });
+            });
+          }
       }
   } );
 }
@@ -96,7 +102,6 @@ function bounce(object){
 
 function moveCamera(object){
   // moveCamera(object);
-  console.log("ANIMATING");
 
   new TWEEN.Tween( camera.position ).to( {
     x: object.cameraPosition.x,
