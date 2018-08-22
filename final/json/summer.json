@@ -362,5 +362,33 @@
     "season":"3",
     "photo":"assets/img/mohonk.jpg",
     "video":""
+  },
+  "archery":{
+    "name":"Archery and Tomahawk Throwing",
+    "description":"Shoot Targets",
+    "path":"assets/models/archery/BowTarget.gltf",
+    "position":{
+      "x":"-21.06",
+      "y":"0.01",
+      "z":"9.35"
+    },
+    "scale":{
+      "x":".001",
+      "y":".001",
+      "z":".001"
+    },
+    "rotation":{
+      "x":0,
+      "y":0,
+      "z":0
+    },
+    "cameraPosition":{
+      "x":0,
+      "y":0,
+      "z":0
+    },
+    "season":"3",
+    "photo":"assets/img/mohonk.jpg",
+    "video":""
   }
 }
