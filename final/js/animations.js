@@ -38,7 +38,7 @@ function trigger_animations(scene){
               modalDescription.innerHTML = node.description;
 
               // jquery for loading backgrounds
-              $('#modalFullscreen').css('background', 'url('+ node.photo+')');
+              $('#modalFullscreen').css('background', 'url('+ node.photo +')');
               $('#modalFullscreen').css('background-size', 'cover');
 
 
@@ -65,14 +65,14 @@ function bounce(object){
       z: object.scale.z * 1.5}, 300)
       .easing( TWEEN.Easing.Cubic.Out).start();
 
-    new TWEEN.Tween( object.position).to( {
-      x: object.position.x,
-      y: object.position.y + (.25 * cpy.y),
-      z: object.position.z}, 300)
-      .easing( TWEEN.Easing.Cubic.Out).start();
+    // new TWEEN.Tween( object.position).to( {
+    //   x: object.position.x,
+    //   y: object.position.y + (.25 * cpy.y),
+    //   z: object.position.z}, 300)
+    //   .easing( TWEEN.Easing.Cubic.Out).start();
 
     object.scale.set(object.scale.x * 1.5,object.scale.y * 1.5,object.scale.z * 1.5);
-    object.position.set(object.position.x,object.position.y +.25,object.position.z );
+    // object.position.set(object.position.x,object.position.y +.25,object.position.z );
 
     // new TWEEN.Tween( object.position).to( {
     //   x: object.position.x,

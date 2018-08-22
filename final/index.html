@@ -22,10 +22,11 @@
     </script>
 
     <!-- Initial Loading Screen -->
-    <!-- <div  id="loadingScreen" class="fullscreen" onclick="hide(loadingScreen)">
+    <div  id="loadingScreen" class="fullscreen">
       <img id="loadingLogo"src="assets/img/logo.5x.png" alt="">
       <h3 id="loadingText" class="text-center"></h3>
-    </div> -->
+    </div>
+
     <!-- Transparent Tutorial Screens -->
     <!-- <div id="tutorialScreen" class="fullscreen" onclick="hide(tutorialScreen);endIntro();resetCamera()">
       <h1 id="tutorialOne" class="text-center tutorialText">CLICK, DRAG, ROTATE ANYWHERE TO EXPLORE</h1>
@@ -50,7 +51,7 @@
           </button>
 
         </div>
-        <div class="col-8 col-md-9 col-lg-10 align-self-start">
+        <div class="col-8 col-md-9 col-lg-10 align-self-start"  data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
           <!-- <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
             <button type="button" class="btn btn-lg btn-outline-light" onclick="resetCamera()">Back</button>
             <div class="btn-group-lg" role="group">
@@ -77,22 +78,22 @@
               </div>
               <div id="collapseThree" class="collapse" aria-labelledby="seasonHeading" data-parent="#seasonDropdown">
                 <div class="card-header" id="springHeading">
-                    <button class="btn seasonButton collapsed" type="button" onclick="seasonChanger(2)">
+                    <button class="btn seasonButton collapsed" type="button" onclick="seasonChanger(1)">
                       SPRING
                     </button>
                 </div>
                 <div class="card-header" id="summerHeading">
-                  <button class="btn seasonButton collapsed" type="button">
+                  <button class="btn seasonButton collapsed" type="button" onclick="seasonChanger(2)">
                     SUMMER
                   </button>
                 </div>
                 <div class="card-header" id="autumnHeading">
-                  <button class="btn seasonButton collapsed" type="button">
+                  <button class="btn seasonButton collapsed" type="button" onclick="seasonChanger(3)">
                     AUTUMN
                   </button>
                 </div>
                 <div class="card-header" id="winterHeading">
-                  <button class="btn seasonButton collapsed" type="button">
+                  <button class="btn seasonButton collapsed" type="button" onclick="seasonChanger(4)">
                     WINTER
                   </button>
                 </div>
@@ -102,7 +103,7 @@
         </div>
         <!-- Animated Sun Logo -->
         <div id="logoWrapper" class="d-none d-sm-none d-md-block" align="center">
-          <h1 id="sunTitle">Map Tests</h1>
+          <h1 id="sunTitle" hidden="true">Map Tests</h1>
           <img id="topbarLogo"src="assets/img/logo.5x.png" alt="">
         </div>
 

@@ -1,21 +1,25 @@
 var camera, scene, renderer;
-var controls, current_season;
+var controls;
+var current_season = 0;
 var interaction;
 
 var objects = [];
-var allSeasons = [];
-var springSummerFall = [];
-var summer = [];
-var winter = [];
+var terrains;
+var allSeasons;
+var springSummerFall;
+var summer;
+var winter;
 
 var attractions;
 var composer;
 
+var globalTest;
+
 init();
-update();
+
 
 //init function to set up scene/renderer and load initial map
-function init(){
+async function init(){
 
   //create scene
   scene = new THREE.Scene();
@@ -34,6 +38,25 @@ function init(){
   renderer.setSize( window.innerWidth, window.innerHeight );
   document.body.appendChild( renderer.domElement );
 
+  //terrain files from json for season changer
+  await loadJSON('json/terrains.json',function(response) {
+    terrains = JSON.parse(response);
+
+  });
+
+  await loadJSON('json/summer.json',function(response) {
+    summer = JSON.parse(response);
+  });
+  await loadJSON('json/winter.json',function(response) {
+    winter = JSON.parse(response);
+  });
+  //Models that exist in every season
+  await loadJSON('json/allSeasons.json',async function(response) {
+    allSeasons = JSON.parse(response);
+    seasonChanger(0); //Load inital season after parsing json
+    // console.log("allseasons: " + allSeasons.tower);
+  });
+
   // Object Interaction
   interaction = new THREE.Interaction(renderer, scene, camera);
   interaction.on;
@@ -43,35 +66,35 @@ function init(){
   camera.position.set( 0, 5, 9);
   controls.update();
 
+  // Add Objects that will be perminant to the scene
+
+  // Lighting
   var light = new THREE.DirectionalLight( 0xffffff, 1, 100);
   light.position.set(-5,10,-3);
   light.intensity = 1;
-
-  // light.target.position.set( 0, 0, 0 );
   light.castShadow = true;
   scene.add(light);
-  // light.shadowDarkness = 0.5;
 
-  //Set up shadow properties for the light
   light.shadow.mapSize.width = 4096;
   light.shadow.mapSize.height = 4096;
   light.shadow.camera.near = 2;
+  light.shadow.camera.right = 45;
+  light.shadow.camera.left = -45;
+  light.shadow.camera.top = 45;
+  light.shadow.camera.bottom = -45;
   light.shadow.camera.far = 20;
   // light.shadow = new THREE.LightShadow( new THREE.PerspectiveCamera( 50, 1, 1200, 2500 ) );
   // light.shadow.bias = 0.0001;
   light.shadow.bias = - 0.01;
-
 
   var ambient = new THREE.AmbientLight(0xfffffff);
   ambient.intensity = 0.2;
   scene.add(ambient);
 
   //Camera Shadow Box Helper
-  var helper = new THREE.CameraHelper( light.shadow.camera );
-  scene.add( helper );
+  // var helper = new THREE.CameraHelper( light.shadow.camera );
+  // scene.add( helper );
 
-  // seasonChanger(1);
-  trigger_animations(scene);
   // animateCamera()
 
   // Load main Terrain (default master terrain for testing)
@@ -104,32 +127,42 @@ function init(){
   	}
   );
 
-
   //Have loading screen update on Loading Manager
   THREE.DefaultLoadingManager.onLoad = function ( ) {
-    // document.getElementById('loadingScreen').style.animation = "fadeOut 1s forwards";
+    document.getElementById('loadingScreen').style.animation = "fadeOut 1s forwards";
     // startIntro();
     console.log( 'Loading Complete!');
-    console.log( objects);
+    trigger_animations(scene);
   };
 
-  // THREE.DefaultLoadingManager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
-  //   var percent = Math.round((itemsLoaded/itemsTotal)*100);
-  //   console.log(percent);
-  //   document.getElementById('loadingText').innerHTML = "Loading " + percent + "%";
-  //   console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
-  //
-  // };
-}
+  THREE.DefaultLoadingManager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+    var percent = Math.round((itemsLoaded/itemsTotal)*100);
+    // console.log(percent);
+    document.getElementById('loadingText').innerHTML = "Loading " + percent + "%";
+    // console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
 
+  };
+  update();
+}
 
 // Refresh scene and switch to selected Season
 async function seasonChanger(season){
-    if (season == 1) {
+    document.getElementById('loadingScreen').style.opacity = 1;
+    for (var key in allSeasons){
+      // console.log("Loading: " + allSeasons[key]);
+      loadGlb(allSeasons[key], true);
+    }
+    // await testGlb(winter.forestBathing);
+    if (season == 0) {
+      //TESTING SEASON
+      current_season = 0;
+      // load models from json file for spring
+    }else if(season == 1) {
       current_season = 1;
       refresh();
       // Re-open loading manager
-      // load summer Terrain
+      // load spring Terrain
+      loadGlb(terrains.summerTerrain,false);
       // load models from json file for spring
 
       // loadJSON(function(response) {
@@ -141,24 +174,33 @@ async function seasonChanger(season){
       current_season = 2;
       refresh();
       // Re-open loading manager
-      // load fall Terrain
-      loadGlb()
-      // load models from json file for fall
+      // load Summer Terrain
+      for (var key in summer){
+        // console.log("Loading Summer: " + summer[key]);
+        loadGlb(summer[key], true);
+      }
+      loadGlb(terrains.summerTerrain,false);
+      // load models from json file for Summer
 
     }else if (season == 3) {
       current_season = 3;
       refresh();
       // Re-open loading manager
       // load fall Terrain
+      loadGlb(terrains.fallTerrain,false);
       // load models from json file for fall
 
     }else if (season == 4) {
       current_season = 4;
       refresh();
       // Re-open loading manager
-      // load spring Terrain
-      // load models from json file for spring
-
+      // load Winter Terrain
+      loadGlb(terrains.winterTerrain,false);
+      // load models from json file for winter
+      for (var key in winter){
+        // console.log("Loading Winter: " + winter[key]);
+        loadGlb(winter[key], true);
+      }
     }
     trigger_animations(scene);
 }
@@ -172,11 +214,11 @@ function refresh(){
 }
 
 //Json Loader for loading object descriptions and properties
-function loadJSON(callback) {
+async function loadJSON(path,callback) {
 
    var xobj = new XMLHttpRequest();
        xobj.overrideMimeType("application/json");
-   xobj.open('GET', 'json/test_environment.json', true); // Replace 'my_data' with the path to your file
+   xobj.open('GET', path, true); // Replace 'my_data' with the path to your file
    xobj.onreadystatechange = function () {
          if (xobj.readyState == 4 && xobj.status == "200") {
            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
@@ -186,8 +228,8 @@ function loadJSON(callback) {
    xobj.send(null);
 }
 
-//Render gltf model from object
-function loadGlb(object) {
+// Render gltf model from object
+function loadGlb(object,selectable) {
     loader.load(
       // resource URL
       object.path,
@@ -209,6 +251,10 @@ function loadGlb(object) {
         gltf.scene.position.y = object.position.y;
         gltf.scene.position.z = object.position.z;
 
+        gltf.scene.rotation.x = object.rotation.x;
+        gltf.scene.rotation.y = object.rotation.y;
+        gltf.scene.rotation.z = object.rotation.z;
+
         gltf.scene.cameraPosition = {"x":0,"y":0,"z":0}
         gltf.scene.cameraPosition.x = object.cameraPosition.x;
         gltf.scene.cameraPosition.y = object.cameraPosition.y;
@@ -217,13 +263,52 @@ function loadGlb(object) {
         gltf.scene.photo = object.photo;
 
 
+        if (selectable) {
+          gltf.scene.selectable = true;
+        }
 
-        gltf.scene.selectable = true;
-
-
+        objects.push(gltf.scene);
         scene.add( gltf.scene );
-        // summer_objects.push(gltf.scene);
-        // objects = summer_objects;
+
+
+      }
+    );
+}
+
+async function testGlb(object) {
+    loader.load(
+      // resource URL
+      object.path,
+      // called when the resource is loaded
+      function ( gltf ) {
+        // console.log(attractions[j].name);
+        gltf.scene.traverse(function(node){
+          node.castShadow = true;
+          node.receiveShadow = true;
+        });
+        gltf.scene.name = object.name;
+        gltf.scene.description = object.description;
+        // gltf.scene.scale.set(.004,.004,.004);
+        gltf.scene.scale.x = object.scale.x;
+        gltf.scene.scale.y = object.scale.y;
+        gltf.scene.scale.z = object.scale.z;
+        // gltf.scene.position.set(1.5,0,3);
+        gltf.scene.position.x = controls.target.x;
+        gltf.scene.position.y = controls.target.y;
+        gltf.scene.position.z = controls.target.z;
+
+
+
+        gltf.scene.cameraPosition = {"x":0,"y":0,"z":0}
+        gltf.scene.cameraPosition.x = object.cameraPosition.x;
+        gltf.scene.cameraPosition.y = object.cameraPosition.y;
+        gltf.scene.cameraPosition.z = object.cameraPosition.z;
+
+
+        globalTest = gltf.scene;
+        scene.add(globalTest);
+
+
 
       }
     );
@@ -260,13 +345,20 @@ function onWindowResize(){
 }
 
 
-function update(cube) {
+function update() {
 
+  // if (globalTest) {
+  //   globalTest.position.copy(controls.target);
+  //   // globalTest.rotation.copy(camera.rotation);
+  //   // globalTest.rotation.z = camera.position.z;
+  //   globalTest.position.y = camera.position.y - 1;
+  //
+  // }
   requestAnimationFrame( update );
   TWEEN.update();
   controls.update();
-  var title = document.getElementById("sunTitle");
-  title.innerHTML = ("Camera: "+Math.round(camera.position.x)+" "+Math.round(camera.position.y)+ " "+ Math.round(camera.position.z)+ "Origin: "+Math.round(controls.target.x)+" "+Math.round(controls.target.y)+ " "+ Math.round(controls.target.z));
+  // var title = document.getElementById("sunTitle");
+  // title.innerHTML = ("Camera: "+camera.position.x+" "+camera.position.y+ " "+ camera.position.z+ "Origin: "+controls.target.x+" "+controls.target.y+ " "+ controls.target.z);
   render();
 
 };

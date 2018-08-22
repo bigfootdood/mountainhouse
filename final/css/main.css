@@ -27,6 +27,8 @@
 
 #loadingScreen{
   background-color: #E1DCC8;
+  opacity: 0;
+  pointer-events: none;
 }
 
 #loadingLogo{
@@ -74,6 +76,7 @@
   /* opacity: 0; */
   z-index: 98;
   position: relative;
+  pointer-events:none;
 }
 #sunTitle{
   font-family: 'Open Sans',serif;
@@ -141,6 +144,7 @@
 
 /* Nav Stuff*/
 #backButtonButton{
+  pointer-events:all;
   font-family: GothamLight;
   font-size: 16pt;
   color: #014631;
@@ -162,6 +166,7 @@
 #seasonDropdown{
   /* padding-top: 18px;
   padding-left: 18px; */
+  pointer-events:all;
   width: 180px;
 }
 #seasonCard{
@@ -237,8 +242,10 @@
   /* padding-right: 3em; */
 }
 #modalPlayButton{
-  color: black;
+  color: grey;
+  margin-bottom: 10px;
   opacity: 88%;
+  font-size: 50px;
 }
 #modalTitle{
   font-family: GothamBold;
