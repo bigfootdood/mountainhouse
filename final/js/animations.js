@@ -1,6 +1,5 @@
 var count = 0;
-var animating = false;
-function trigger_animations(scene,objects){
+function trigger_animations(scene,objects,animating){
   scene.traverse( function( node ) {
 
 

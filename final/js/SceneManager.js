@@ -14,6 +14,8 @@ var winter;
 var attractions;
 var composer;
 
+var animating = false;
+
 var globalTest;
 
 init();
@@ -140,7 +142,7 @@ async function init(){
     document.getElementById('loadingScreen').style.opacity = 0;
     // startIntro();
     console.log( 'Loading Complete!');
-    trigger_animations(scene);
+    trigger_animations(scene,objects,animating);
   };
 
   THREE.DefaultLoadingManager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
@@ -218,7 +220,6 @@ async function seasonChanger(season){
         loadGlb(winter[key], true);
       }
     }
-    trigger_animations(scene);
 }
 
 function refresh(){
@@ -373,7 +374,10 @@ function update() {
   // }
   requestAnimationFrame( update );
   TWEEN.update();
-  controls.update();
+  if (!animating) {
+    controls.update();
+  }
+
   // var title = document.getElementById("sunTitle");
   // title.innerHTML = ("Camera: "+camera.position.x+" "+camera.position.y+ " "+ camera.position.z+ "Origin: "+controls.target.x+" "+controls.target.y+ " "+ controls.target.z);
   render();

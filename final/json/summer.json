@@ -278,5 +278,89 @@
     "season":"3",
     "photo":"assets/img/mohonk.jpg",
     "video":""
+  },
+  "climbing":{
+    "name":"Rock climbing",
+    "description":"Rock Climbing Adventures!",
+    "path":"assets/models/rockClimbing/Climbing.gltf",
+    "position":{
+      "x":"-4.9",
+      "y":"-1.09",
+      "z":"22.09"
+    },
+    "scale":{
+      "x":".001",
+      "y":".001",
+      "z":".001"
+    },
+    "rotation":{
+      "x":0,
+      "y":0,
+      "z":0
+    },
+    "cameraPosition":{
+      "x":0,
+      "y":0,
+      "z":0
+    },
+    "season":"3",
+    "photo":"assets/img/mohonk.jpg",
+    "video":""
+  },
+  "tennisRed":{
+    "name":"Tennis",
+    "description":"Play Tennis",
+    "path":"assets/models/tennis/RedTennisCourt.gltf",
+    "position":{
+      "x":"-15.4",
+      "y":"-0.33",
+      "z":"-0.204"
+    },
+    "scale":{
+      "x":".01",
+      "y":".01",
+      "z":".01"
+    },
+    "rotation":{
+      "x":0,
+      "y":0,
+      "z":0
+    },
+    "cameraPosition":{
+      "x":0,
+      "y":0,
+      "z":0
+    },
+    "season":"3",
+    "photo":"assets/img/mohonk.jpg",
+    "video":""
+  },
+  "tennisGreen":{
+    "name":"Tennis",
+    "description":"Play Tennis",
+    "path":"assets/models/tennis/GreenTennisCourt.gltf",
+    "position":{
+      "x":"-12.26",
+      "y":"-0.62",
+      "z":"-3.69"
+    },
+    "scale":{
+      "x":".01",
+      "y":".01",
+      "z":".01"
+    },
+    "rotation":{
+      "x":0,
+      "y":0,
+      "z":0
+    },
+    "cameraPosition":{
+      "x":0,
+      "y":0,
+      "z":0
+    },
+    "season":"3",
+    "photo":"assets/img/mohonk.jpg",
+    "video":""
   }
 }
