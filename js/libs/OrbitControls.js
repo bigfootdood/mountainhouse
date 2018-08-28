@@ -135,6 +135,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 		return function update() {
 
+			
 			var position = scope.object.position;
 
 			offset.copy( position ).sub( scope.target );
@@ -290,7 +291,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 	function rotateLeft( angle ) {
 
-		sphericalDelta.theta -= angle;
+		sphericalDelta.theta -= angle/2;
 
 	}
 
