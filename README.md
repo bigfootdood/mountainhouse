@@ -96,6 +96,7 @@ It was taking forever placing the individual models on the map so I made **Model
 3. Scroll down to the function titled `seasonChanger`
 
 4. In the following section of code:
+
   ~~~js
   //Model Placement mode
   if (modelPlacementMode) {
@@ -113,7 +114,7 @@ It was taking forever placing the individual models on the map so I made **Model
 
    **Example:**
    Replacing `json_file.modelPlacementName` with `spring.garden` results in:
-   
+
    ![model placemnt gif](https://lh3.googleusercontent.com/FR6s6QsJLOGbQHN_76CbC9xiueQcMZ4oN_tYUDfA6J_54dJdTkqiFqTHLkpHK2MLIupYlOc5vqHxDtJHTxtq3QZ-DLkLEEiYr1U_tVJXChrl_5Y0oE5ePdA_z_xC2IdLWmM3jw2LUDs=w2400)
 
    Notice the panel that appeared at the bottom left of the page. This is the position of the model and the camera!
