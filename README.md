@@ -67,8 +67,7 @@
 
   **Rotation:** rotate along given axis (rembember this is in *radians*)
 
-  **Camera position:** Where the camera is after the model is clicked on
-
+  **Camera position:** Where the camera is after the model is clicked on. *Note: Only the Greenhouse has a camera position set. Clicking on any other model will result in strange camera positions until updated.*
 
   **Photo & Video:** Paths to the background photo in the modal and the video that plays in the modal
 
@@ -87,7 +86,7 @@
 
 It was taking forever placing the individual models on the map so I made **Model Placement Mode** to make things a little easier. The mode temporarily adds a duplicate of your new model that is fixed to the camera.
 
-** To enable model placement mode: **
+### To enable model placement mode:
 
 
 1. Open `js/SceneManager.js`
@@ -104,19 +103,20 @@ It was taking forever placing the individual models on the map so I made **Model
   }
   ~~~
 
-  Switch `json_file` to the name of the json file you are placing the model from.
+  * Switch `json_file` to the name of the json file you are placing the model from.
 
-  Switch `modelPlacementName` to the modelPlacementName set in the json file above.
+  * Switch `modelPlacementName` to the modelPlacementName set in the json file above.
 
 5. Save and Refresh the page to see your reference model
 
    *Note: This is only a copy of your model, there will be a duplicate at the position set in the json file*
 
-  **Example:**
-  Replacing `json_file.modelPlacementName` with `spring.garden` results in:
-  ![model placemnt gif](https://lh3.googleusercontent.com/FR6s6QsJLOGbQHN_76CbC9xiueQcMZ4oN_tYUDfA6J_54dJdTkqiFqTHLkpHK2MLIupYlOc5vqHxDtJHTxtq3QZ-DLkLEEiYr1U_tVJXChrl_5Y0oE5ePdA_z_xC2IdLWmM3jw2LUDs=w2400)
+   **Example:**
+   Replacing `json_file.modelPlacementName` with `spring.garden` results in:
+   
+   ![model placemnt gif](https://lh3.googleusercontent.com/FR6s6QsJLOGbQHN_76CbC9xiueQcMZ4oN_tYUDfA6J_54dJdTkqiFqTHLkpHK2MLIupYlOc5vqHxDtJHTxtq3QZ-DLkLEEiYr1U_tVJXChrl_5Y0oE5ePdA_z_xC2IdLWmM3jw2LUDs=w2400)
 
-  Notice the panel that appeared at the bottom left of the page. This is the position of the model and the camera!
+   Notice the panel that appeared at the bottom left of the page. This is the position of the model and the camera!
 
 6. Place the model by panning and zooming then copy the Model Position and Camera position into your Json.
 
