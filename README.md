@@ -1,5 +1,14 @@
 # Mohonk 360 Map
 
+### To Do:
+
+* Finish intro sequence (currently disabled)
+* Clean up HTML & CSS
+  * CDN js files, minify css, ...
+* Implement Elliptical Orbit Camera
+* Optimize JS where possible
+* implement season title change in Modal
+
 ## How to add a model to the map:
 
 **1. Add GLTF Model folder to the `assets/models` folder**
@@ -68,7 +77,7 @@
 
   **Photo & Video:** Paths to the background photo in the modal and the video that plays in the modal
 
-**3. Refresh the site and make sure the model is loading properly**
+**3. Refresh the site and make sure the model is loading properly**`
 
 **4. Placing the model:**
 
@@ -96,5 +105,19 @@ It was taking forever placing the individual models on the map so I made **Model
 
   Switch `modelPlacementName` to the modelPlacementName set in the json file above.
 
-5. Save and Refresh the page to see your model
+5. Save and Refresh the page to see your reference model
+
+   *Note: This is only a copy of your model, there will be a duplicate at the position set in the json file*
+
+  **Example:**
+  Replacing `json_file.modelPlacementName` with `spring.garden` results in:
+  ![model placemnt gif](https://lh3.googleusercontent.com/FR6s6QsJLOGbQHN_76CbC9xiueQcMZ4oN_tYUDfA6J_54dJdTkqiFqTHLkpHK2MLIupYlOc5vqHxDtJHTxtq3QZ-DLkLEEiYr1U_tVJXChrl_5Y0oE5ePdA_z_xC2IdLWmM3jw2LUDs=w2400)
+
+  Notice the panel that appeared at the bottom left of the page. This is the position of the model and the camera!
+
+6. Place the model by panning and zooming then copy the Model Position and Camera position into your Json.
+
+7. Refresh and see your permanent model paced!
+
+
 ****
