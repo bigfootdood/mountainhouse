@@ -1,27 +1,26 @@
-var camera, scene, renderer;
-var controls;
+var camera,
+    scene,
+    renderer,
+    controls,
+    interaction,
+    terrains,
+    allSeasons,
+    spring,
+    summer,
+    fall,
+    winter,
+    attractions,
+    composer;
+
 var current_season = 0;
-var interaction;
-
 var objects = [];
-var terrains;
-var allSeasons;
-var spring;
-var summer;
-var fall;
-var winter;
-
-var attractions;
-var composer;
-
 var animating = false;
 
-var globalTest;
+var modelPlacementMode = false;
+var globalModel;
 
 init();
 
-
-//init function to set up scene/renderer and load initial map
 async function init(){
 
   //create scene
@@ -100,6 +99,9 @@ async function init(){
   THREE.DefaultLoadingManager.onLoad = function ( ) {
     document.getElementById('loadingScreen').style.animation = "fadeOut 1s";
     document.getElementById('loadingScreen').style.opacity = 0;
+    if (modelPlacementMode) {
+      document.getElementById('modelPlacementscreen').hidden = false;
+    }
     // startIntro();
     console.log( 'Loading Complete!');
     trigger_animations(scene,objects,animating);
@@ -111,16 +113,22 @@ async function init(){
     // console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
   };
   update();
+
 }
 
 // Refresh scene and switch to selected Season
 async function seasonChanger(season){
     document.getElementById('loadingScreen').style.opacity = 1;
-    // Load models used in all seasons
+
+    //Model Placement mode
+    if (modelPlacementMode) {
+      await testGlb(spring.garden);
+    }
+
+
     for (var key in allSeasons){
       loadGlb(allSeasons[key], true);
     }
-    // await testGlb(spring.garden);
     if (season == 0) { //TESTING SEASON
       current_season = 0;
     }else if(season == 1) { //SPRING
@@ -233,12 +241,12 @@ async function testGlb(object) {
         gltf.scene.scale.y = object.scale.y;
         gltf.scene.scale.z = object.scale.z;
 
-        gltf.scene.position.x = controls.target.x;
-        gltf.scene.position.y = controls.target.y;
-        gltf.scene.position.z = controls.target.z;
+        gltf.scene.position.x = 0;
+        gltf.scene.position.y = 0;
+        gltf.scene.position.z = 0;
 
-        globalTest = gltf.scene;
-        scene.add(globalTest);
+        globalModel = gltf.scene;
+        scene.add(globalModel);
 
 
 
@@ -279,21 +287,28 @@ function onWindowResize(){
 
 function update() {
 
-  // if (globalTest) {
-  //   globalTest.position.copy(controls.target);
-  //   // globalTest.rotation.copy(camera.rotation);
-  //   // globalTest.rotation.x = camera.position.z;
-  //   globalTest.position.y = camera.position.y - 1;
-  //
-  // }
+  if (globalModel) {
+    globalModel.position.copy(controls.target);
+    globalModel.position.y = camera.position.y - 2;
+  }
+
+  if (modelPlacementMode) {
+    document.getElementById("modelX").innerHTML = controls.target.x;
+    document.getElementById("modelY").innerHTML = camera.position.y - 2;
+    document.getElementById("modelZ").innerHTML = controls.target.z;
+
+    document.getElementById("cameraX").innerHTML = camera.position.x;
+    document.getElementById("cameraY").innerHTML = camera.position.y;
+    document.getElementById("cameraZ").innerHTML = camera.position.z;
+  }
+  // var title = document.getElementById("sunTitle");
+  // title.innerHTML = ("Camera: "+camera.position.x+" "+camera.position.y+ " "+ camera.position.z+ "Origin: "+controls.target.x+" "+controls.target.y+ " "+ controls.target.z);
+
   requestAnimationFrame( update );
   TWEEN.update();
   if (!animating) {
     controls.update();
   }
-
-  // var title = document.getElementById("sunTitle");
-  // title.innerHTML = ("Camera: "+camera.position.x+" "+camera.position.y+ " "+ camera.position.z+ "Origin: "+controls.target.x+" "+controls.target.y+ " "+ controls.target.z);
   render();
 };
 

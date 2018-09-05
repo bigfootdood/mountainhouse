@@ -51,6 +51,14 @@
   position: fixed;
 }
 
+#modelPlacementscreen{
+  z-index: 95;
+  position: absolute;
+  background-color: white;
+  bottom: 0vh;
+
+}
+
 #tutorialScreen{
   z-index: 95;
   background-color: rgb(128,128,128,.7);
