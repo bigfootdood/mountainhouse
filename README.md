@@ -69,13 +69,15 @@
 
   **Camera position:** Where the camera is after the model is clicked on
 
+
+  **Photo & Video:** Paths to the background photo in the modal and the video that plays in the modal
+
   **Season:** Number representing which season the model belongs to (for the description in the modal)
 
 | Season | All Seasons    | Summer | winter | Fall,Summer,Spring |
 | :------------- | :------------- | :------------- | :------------- | :------------- |
 | Number     | 0      | 1 | 2 | 3 |
 
-  **Photo & Video:** Paths to the background photo in the modal and the video that plays in the modal
 
 **3. Refresh the site and make sure the model is loading properly**`
 
@@ -85,7 +87,8 @@
 
 It was taking forever placing the individual models on the map so I made **Model Placement Mode** to make things a little easier. The mode temporarily adds a duplicate of your new model that is fixed to the camera.
 
-**To enable model placement mode: ***
+** To enable model placement mode: **
+
 
 1. Open `js/SceneManager.js`
 
@@ -117,7 +120,7 @@ It was taking forever placing the individual models on the map so I made **Model
 
 6. Place the model by panning and zooming then copy the Model Position and Camera position into your Json.
 
-7. Refresh and see your permanent model paced!
+7. Refresh and see your permanent model placed!
 
 
 ****
